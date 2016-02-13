@@ -18,23 +18,25 @@ void print_number(int input)
     {
       print_char('-');
       input *= -1;
+      number *= -1;
       printf("\nInput is %i\n", input);
     }
 
-  /* reduce number to first digit                                                                                                                     * and find remainder */
+  /* reduce number to first digit
+   * and find remainder */
   if (input >= 10) //this line is probs unnecessary
     {
       while (number > 9)
 	{
-	  printf("While loop to reduce is running\n");
+	  printf("While loop to reduce is running, number is %i\n", number);
 	  power *= 10;
 	  number /= 10;
 	}
       n_remaining = input - number*power;
     }
 
-  /* print number if it's only one digit;                                                                                                          
-   * not sure if the condition is necessary,                                                                                                       
+  /* print number if it's only one digit;
+   * not sure if the condition is necessary,
    * actually. */
   if (number >= 0 && number < 10)
     {
