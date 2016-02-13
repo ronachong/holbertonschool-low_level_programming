@@ -2,15 +2,9 @@
 
 void print_number(int input)
 {
-  int power;
-  int n_remaining;
-  int number;
-  int char_2_print;
-
-  number = input;
-  power = 1;
-  n_remaining = 0;
-  char_2_print = 0;
+  int number = input;
+  int power = 1;
+  int n_remaining = 0;
 
   /* handle negative cases */
   if (input < 0)
