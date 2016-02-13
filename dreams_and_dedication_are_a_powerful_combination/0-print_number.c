@@ -29,13 +29,8 @@ void print_number(int input)
     }
   n_remaining = input - number*power;
 
-  /* print number if it's only one digit; 
-   * not sure if the condition is necessary,
-   * actually. */
-  if (number >= 0 && number < 10)
-    {
-      print_char(number + 48);
-    }
+  /* print number reduced to one digit*/
+  print_char(number + 48);
 
   /* test if next digit is a 0; special case */
   if (n_remaining * 10 < power && power > 1)
