@@ -22,15 +22,12 @@ void print_number(int input)
 
   /* reduce number to first digit 
    * and find remainder */
-  if (input >= 10) //this line is probs unnecessary
+  while (number > 9)
     {
-      while (number > 9)
-	{
-	  power *= 10;
-	  number /= 10;
-	}
-      n_remaining = input - number*power;
+      power *= 10;
+      number /= 10;
     }
+  n_remaining = input - number*power;
 
   /* print number if it's only one digit; 
    * not sure if the condition is necessary,
