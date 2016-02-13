@@ -14,8 +14,7 @@ void print_number(int input)
       number *= -1;
     }
 
-  /* reduce number to first digit 
-   * and find remainder */
+  /* reduce number to first digit and find remainder */
   while (number > 9)
     {
       power *= 10;
