@@ -1,5 +1,8 @@
 #include "header.h"
 
+/* prints single digit combos,
+i.e. 0-9 */
+
 void print_combination_1(void)
 {
   int n;

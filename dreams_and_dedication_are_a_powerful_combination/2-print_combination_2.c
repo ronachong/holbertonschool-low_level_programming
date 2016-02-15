@@ -1,5 +1,10 @@
 #include "header.h"
 
+/* prints two digit combos, 
+ * not including combinations that already printed
+ * in a different order but with the same numbers.
+ */
+
 void print_combination_2(void)
 {
   int n;
