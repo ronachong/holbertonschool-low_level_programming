@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 /* Prototypes for Keep Calm Functions */
+int print_char(char c);
 int absolute(int);
 char uppercase(char);
 void print_last_digit(int);
