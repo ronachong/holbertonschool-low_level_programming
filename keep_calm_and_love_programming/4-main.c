@@ -1,10 +1,9 @@
-void print_to_98(int n);
+#include "header.h"
 
 int main(void)
 {
-  print_to_98(90);
-  print_to_98(-10);
-  print_to_98(98);
-  print_to_98(113);
+  print_combination_2();
+  printf("\n");
   return (0);
 }
+
