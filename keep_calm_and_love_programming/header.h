@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 /* Prototypes for Keep Calm Functions */
 int absolute(int);
 char uppercase(char);
