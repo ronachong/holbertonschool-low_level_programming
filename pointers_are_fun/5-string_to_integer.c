@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 int string_to_integer(char *s) {
   int length;
   float power = 0.1;
