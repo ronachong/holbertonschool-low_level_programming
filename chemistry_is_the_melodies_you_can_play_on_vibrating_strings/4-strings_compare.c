@@ -1,13 +1,24 @@
+#include <stdio.h>
+
 int strings_compare(char *s1, const char *s2) {
   int i;
 
-  /* loop thru and find first instance of difference */
-  for (i = 0; s1[i] == s2[i]; i++){};
+  /* what am I trying to do?
+     find first char which is different
+     return value based on that char
+     - 0 if char is the same
+     - else: difference bw chars */
 
-  /* if char in s1 < s2, return negative int */
-  if (s1[i] < s2[i]) {
-    i*= -1;
+  /* loop thru and find first instance of difference;
+   * if no difference exists, then end of s1 */
+  for (i = 0; s1[i]==s2[i] && s1[i] != '\0'; i++) { 
   }
-  return i;  /* if char in s1 > s2, return positive int; if =, return 0 */
-  ;
+
+  /* if s1[i] & s2[i] are the same, then whole string is same */
+  if (s1[i] == s2[i]) {
+    return 0;
+  }
+  
+  /* else */
+  return (s1[i] - s2[i]);
 }
