@@ -1,4 +1,4 @@
-#include "my_functions.h"
+int print_char(char c);
 
 /* positive_or_not():
  * uses if statements;

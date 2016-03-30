@@ -1,4 +1,4 @@
-#include "header.h"
+int print_char(char c);
 
 /* print_number(int) takes an integer
  * in parameter and prints it. */
