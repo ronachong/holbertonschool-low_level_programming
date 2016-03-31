@@ -9,11 +9,11 @@ int factorial (int n) {
   if (n == 0) {
     return 1;
   }
-  // else
-  // check for & handle edge cases
+  /* else */
+  /* check for & handle edge cases */
   if ( (n - 1) > (INT_MAX/n) || n < (INT_MIN/n + 1) ) {
     return -1;
   }
-  // ELSE
+  /* ELSE */
   return n * factorial(n-1);
 }
