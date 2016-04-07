@@ -1,0 +1,8 @@
+#steps
+
+
+# compile all the c files to .o files for library
+
+# build library with ar
+
+# index library
