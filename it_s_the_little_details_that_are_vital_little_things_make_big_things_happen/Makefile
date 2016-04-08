@@ -18,8 +18,7 @@ libholbertonschool.a: $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # force compilation of all object files
-re:
-	clean all
+re: clean all
 
 # clean object files after compiling library
 clean:
