@@ -1,6 +1,6 @@
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra -pedantic -Iinc
-
+DEPS := inc/holbertonschool.h
 OBJECTS := absolute.o cap_string.o concat_strings.o first_digit.o is_prime_number.o lowercase.o nconcat_strings.o positive_or_not.o power.o print_array.o print_char.o print_number.o print_string.o reverse_array.o reverse_string.o square_root.o string_copy.o string_ncopy.o strings_compare.o string_to_integer.o str_len.o swap_int.o uppercase.o uppercase_string.o
 
 # default target for makefile
