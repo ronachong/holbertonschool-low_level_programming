@@ -15,8 +15,10 @@ int main(void)
 {
   int array[6] = {98, 402, 35, 402, 1024, 64};
 
-  printf(
-	 "%d\n", advanced_search(array, 6, &check));
+  printf("%d\n", check(8));
+  printf("%d\n", check2(201));
+
+  printf("%d\n", advanced_search(array, 6, &check));
   printf("%d\n", advanced_search(array, 6, &check2));
   return (0);
 }
