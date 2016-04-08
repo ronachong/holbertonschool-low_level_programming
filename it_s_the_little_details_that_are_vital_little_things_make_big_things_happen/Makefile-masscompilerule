@@ -1,0 +1,32 @@
+#steps
+
+CC := gcc
+CFLAGS := -Wall -Werror -Wextra -pedantic -Iinc
+DEPS := inc/holbertonschool.h
+
+SRCDIR := src
+SRCFILES := absolute.c cap_string.c concat_strings.c first_digit.c is_prime_number.c lowercase.c nconcat_strings.c positive_or_not.c power.c print_array.c print_char.c print_number.c print_string.c reverse_array.c reverse_string.c square_root.c string_copy.c string_ncopy.c strings_compare.c string_to_integer.c str_len.c swap_int.c uppercase.c uppercase_string.c
+SOURCES := $(patsubst %, $(SRCDIR)/%,$(SRCFILES))
+OBJECTS := absolute.o cap_string.o concat_strings.o first_digit.o is_prime_number.o lowercase.o nconcat_strings.o positive_or_not.o power.o pr\
+int_array.o print_char.o print_number.o print_string.o reverse_array.o reverse_string.o square_root.o string_copy.o string_ncopy.o strings_comp
+are.o string_to_integer.o str_len.o swap_int.o uppercase.o uppercase_string.o
+
+# default target for makefile
+all: libholbertonschool.a
+
+# build library from object files (ar); and index (ranlib):
+libholbertonschool.a: $(OBJECTS)
+	ar -cvq libholbertonschool.a $(OBJECTS)
+	ranlib libholbertonschool.a
+
+# compile all the c files to object files for library
+$(OBJECTS): $(SOURCES) $(DEPS)
+	$(CC) $(CFLAGS) -c $< $(DEPS) -o $@
+
+# force compilation of all object files
+re:
+	clean all
+
+# clean object files after compiling library
+clean:
+	rm *.o
