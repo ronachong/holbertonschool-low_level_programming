@@ -1,5 +1,5 @@
 #include <stdio.h>
-void advanced_search(int *, int, int (*)(int));
+int advanced_search(int *, int, int (*)(int));
 
 int check(int a)
 {
