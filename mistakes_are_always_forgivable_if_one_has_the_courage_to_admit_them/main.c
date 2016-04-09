@@ -24,6 +24,12 @@ int main (int ac, char **av) {
 
   
   func_to_call = get_op_func(operator); /* we use get_op_func to assign the appropriate pointer to our var */
+
+  if (func_to_call == 0) {
+    return 1;
+  }
+
+  /* else */
   printf("%d\n", func_to_call(first_operand, second_operand)); /* now we use func_to_call (our pointer) to call our op function */
   return 0;
 }
