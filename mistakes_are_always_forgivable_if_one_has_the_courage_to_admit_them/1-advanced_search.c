@@ -3,25 +3,15 @@
    function referenced by pointer parameter."
  */
 
-int check(int*array,int size, int(*check_func)(int), int i);
-
 int advanced_search(int *array, int size, int (*check_func)(int)) {
-  return check(array, size, &check_func, 0);
-}
+  int i;
 
-int check(int*array,int size, int(**check_func)(int), int i) {
-  /* if we reach i == size; none match, return -1 */
-  if (i == size) {
-    return -1;
+  for (i = 0; i < size; i++) {
+    if (check_func(array[i]) == 1) {
+      return 1;
+    } 
   }
 
-  /* else */
-  /* if check_func returns 1, we have a match, return 1 */
-  if (check_func(array[i]) == 1) {
-    return 1;
-  }
-
-  /* ELSE */
-  /* if check_func returns 0, but i != 6, make recursive call */
-  return check(array, size, &check_func, i + 1);
+  /* if computer goes thru whole loop without conditional succeeding: */
+  return -1;
 }
