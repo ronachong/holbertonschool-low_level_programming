@@ -2,7 +2,12 @@
 #include <stdio.h>
 
 int **alloc_grid(int, int);
-void print_grid(int **, int, int) {…}
+void print_grid(int **grid, int width, int height) {
+  /* grid is a return from alloc_grid -- i.e. a pointer to a grid?
+     would it not still be a pointer to one spot in memory?
+     why is it a pointer to a pointer? */
+  ;
+}
 
 int main()
 {
