@@ -3,10 +3,19 @@
 
 int **alloc_grid(int, int);
 void print_grid(int **grid, int width, int height) {
-  /* grid is a return from alloc_grid -- i.e. a pointer to a grid?
-     would it not still be a pointer to one spot in memory?
-     why is it a pointer to a pointer? */
-  ;
+  int i;
+  int j;
+  /* let's see... loop thru grid, print ea. value, followed by comma or /n */
+  for (i = 0; i < height; i++) {
+    for (j = 0; j < width; j++) {
+      printf("%d", grid[i][j]);
+      if (j != width - 1) {
+	printf(", ");
+      }	else {
+	printf("\n");
+      }
+    }
+  }
 }
 
 int main()
