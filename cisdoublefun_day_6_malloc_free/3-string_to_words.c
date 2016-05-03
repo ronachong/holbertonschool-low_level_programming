@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 int find_num_words(char *s);
 
 char **string_to_words(char *s) {
@@ -72,6 +74,7 @@ char **assign_letters(char *s, int start_position, int current_index, int words_
     for (j = 0; j <= num_letters; j++) {
       outer_array[current_index][j] == s[i];
     }
+  }
 
   /* recursive call */
   return assign_letters(s, i, current_index + 1, words_in_array, outer_array);
