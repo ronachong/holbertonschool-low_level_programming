@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 int find_num_words(char *s);
+char **assign_letters(char *s, int start_position, int current_index, int words_in_array, int *outer_array);
 
 char **string_to_words(char *s) {
   /* init outer array of pointers */
