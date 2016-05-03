@@ -49,7 +49,7 @@ char **assign_letters(char *s, int start_position, int current_index, int words_
   int num_letters;
   
   /* base case: index == words_in_array, i.e. all words have been processed; return array */
-  if (index == words_in_array) {
+  if (current_index == words_in_array) {
     return outer_array;
   }
 
