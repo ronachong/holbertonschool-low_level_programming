@@ -47,6 +47,7 @@ char **assign_letters(char *s, int start_position, int current_index, int words_
   int i;
   int j;
   int num_letters;
+  int num_nonletters;
   
   /* base case: index == words_in_array, i.e. all words have been processed; return array */
   if (current_index == words_in_array) {
@@ -55,33 +56,31 @@ char **assign_letters(char *s, int start_position, int current_index, int words_
 
   /* ELSE */
   /* count chars in current word */
-  for (i = start_position, num_letters = 0; s[i] != '\0'; i++) {
-    if ((s[i] >= '0' && s[i] <=9) || (s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z')) {
+  for (i = start_position, num_letters = 0, num_nonletters = 0; s[i] != '\0'; i++) {
+    if ((s[i] >= '0' && s[i] <= '9') || (s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z')) {
       num_letters++;
-    }
-    if (s[i+1] < '0' || (s[i+1] > '9' && s[i+1] < 'A') || (s[i+1] > 'Z' && s[i+1] < 'a') || s[i+1] > 'z') {
-      break;
+    } else {
+      num_nonletters++;
+      if ((s[i+1] >= '0' && s[i+1] <= '9') ||
+	  (s[i+1] >= 'A' && s[i+1] <= 'Z') ||
+	  (s[i+1] >= 'a' && s[i+1] <= 'z')) {
+	break;
+      }
     }
   }
+
   /* allocate memory for chars in word and assign ptr to memory to outer array */
   outer_array[current_index] = malloc(sizeof(char)*num_letters);
   if (outer_array[current_index] == NULL) {
     fprintf(stderr, "Malloc for outer_array[current_index] did not work.\n");
     free(outer_array);
   }
-  else {
-    printf("Malloc should have worked.\n");
-    printf("current_index is %d. words_in_array is %d.\n", current_index, words_in_array);
-    printf("outer_array[current_index] = %p\n", outer_array[current_index]);
-  }
 
   /* assign letters from word in string to allocated mem */
   for (i = start_position, j = 0; j < num_letters; i++, j++) {
-    printf("s[i] is %c\n", s[i]);
-    printf("outer_array[current_index][j] is %c\n", outer_array[current_index][j]);
     outer_array[current_index][j] = s[i];
   }
 
   /* recursive call */
-  return assign_letters(s, i, current_index + 1, words_in_array, outer_array);
+  return assign_letters(s, i + num_nonletters, current_index + 1, words_in_array, outer_array);
 }
