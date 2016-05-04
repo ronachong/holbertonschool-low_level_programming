@@ -64,7 +64,7 @@ char **assign_letters(char *s, int start_position, int current_index, int words_
     }
   }
   /* allocate memory for chars in word and assign ptr to memory to outer array */
-  outer_array[current_index] = malloc(sizeof(char*num_letters));
+  outer_array[current_index] = malloc(sizeof(char)*num_letters);
   if (outer_array[current_index] == NULL) {
     fprintf(stderr, "Malloc for outer_array[current_index] did not work.\n");
     free(outer_array);
