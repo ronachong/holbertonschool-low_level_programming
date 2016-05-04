@@ -23,7 +23,8 @@ char **string_to_words(char *s) {
    * assign pointers to inner arrays as elements of outer arrays;
    * and assign word strings to allocated memory for each inner array */
   /* return array of pointers to word strings */
-  return assign_letters(s, 0, 0, words_in_array, outer_array);
+  /*return assign_letters(s, 0, 0, words_in_array, outer_array);*/
+  return outer_array;
 }
 
 
@@ -32,20 +33,23 @@ int find_num_words(char *s) {
   int num_words;
 
   /* loop thru string and increment up each time a non-alphanum char follows alphanum char */
-  for (i = 0; s[i] != '\0'; i++) {
+  for (i = 0, num_words = 0; s[i] != '\0'; i++) {
     if ((s[i] >= '0' && s[i] <=9) || (s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z')) {
+      printf("%c", s[i]);
       if (s[i+1] < '0' || (s[i+1] > '9' && s[i+1] < 'A') || (s[i+1] > 'Z' && s[i+1] < 'a') || s[i+1] > 'z') {
+	printf("\n");
         num_words++;
       }
     }
   }
+  printf("Found %d words", num_words);
   return num_words;
 }
 
 
 char **assign_letters(char *s, int start_position, int current_index, int words_in_array, char **outer_array) {
   int i;
-  int j;
+  /*int j;*/
   int num_letters;
   
   /* base case: index == words_in_array, i.e. all words have been processed; return array */
@@ -69,13 +73,18 @@ char **assign_letters(char *s, int start_position, int current_index, int words_
     fprintf(stderr, "Malloc for outer_array[current_index] did not work.\n");
     free(outer_array);
   }
+  else {
+    printf("Malloc should have worked.\n");
+    printf("current_index is %d. words_in_array is %d.\n", current_index, words_in_array);
+    printf("outer_array[current_index] = %p\n", outer_array[current_index]);
+  }
 
-  /* assign letters from word in string to allocated mem */
+  /* assign letters from word in string to allocated mem *
   for (i = start_position; i <= start_position + num_letters; i++) {
     for (j = 0; j <= num_letters; j++) {
       outer_array[current_index][j] == s[i];
     }
-  }
+    }*/
 
   /* recursive call */
   return assign_letters(s, i, current_index + 1, words_in_array, outer_array);
