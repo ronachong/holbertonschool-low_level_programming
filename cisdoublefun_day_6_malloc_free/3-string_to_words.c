@@ -12,7 +12,7 @@ char **string_to_words(char *s) {
   words_in_array = find_num_words(s);
  
   /* allocate memory for outer array */
-  outer_array = malloc(sizeof((int *)*words_in_array));
+  outer_array = malloc(sizeof(char *)*words_in_array);
   if (outer_array == NULL) {
     fprintf(stderr, "Not enough memory left!\n");
     free(outer_array);
