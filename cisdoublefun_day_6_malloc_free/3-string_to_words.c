@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 int find_num_words(char *s);
-char **assign_letters(char *s, int start_position, int current_index, int words_in_array, int *outer_array);
+char **assign_letters(char *s, int start_position, int current_index, int words_in_array, char **outer_array);
 
 char **string_to_words(char *s) {
   /* init outer array of pointers */
-  int *outer_array; /* for some reason, geeksforgeeks exp. does not init as ** - ask Alex? */
+  char **outer_array; /* for some reason, geeksforgeeks exp. does not init as ** - ask Alex? */
   int words_in_array;
 
   words_in_array = find_num_words(s);
@@ -43,7 +43,7 @@ int find_num_words(char *s) {
 }
 
 
-char **assign_letters(char *s, int start_position, int current_index, int words_in_array, int *outer_array) {
+char **assign_letters(char *s, int start_position, int current_index, int words_in_array, char **outer_array) {
   int i;
   int j;
   int num_letters;
