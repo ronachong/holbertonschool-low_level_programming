@@ -8,10 +8,10 @@ void print_number(int);
    and prints them, using print_string and print_number. */
 
 void print_string_struct(struct String *str) {
-  print_string(str -> str);
+  print_string(str->str);
   print_char(',');
   print_char(' ');
-  print_number(str -> length);
+  print_number(str->length);
   print_char('\n');
 }
 
