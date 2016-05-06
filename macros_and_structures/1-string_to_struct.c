@@ -3,7 +3,7 @@
 
 int print_char(char);
 int find_length(char *);
-char *copy_string(char *s);
+char *copy_string(char *s, int length);
 
 /* string_to_struct 
    allocates the memory for the objects in struct String;
