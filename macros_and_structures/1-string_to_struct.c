@@ -54,6 +54,10 @@ char *copy_string(char *s, int length) {
   int i;
   
   copy = malloc(sizeof(char)*length);
+  if (copy == NULL) {
+    return NULL;
+  }
+
   for (i = 0; i <= length; i++) {
     copy[i] = s[i];
   }
