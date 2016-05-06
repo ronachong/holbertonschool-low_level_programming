@@ -1,3 +1,4 @@
+#include <stdlib.h>
 int find_length(char *);
 
 /* string_to_struct 
