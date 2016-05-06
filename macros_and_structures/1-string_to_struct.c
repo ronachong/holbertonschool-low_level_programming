@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "str_struct.h"
 
 int find_length(char *);
 
