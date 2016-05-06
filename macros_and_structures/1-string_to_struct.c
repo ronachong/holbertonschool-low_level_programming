@@ -17,6 +17,9 @@ struct String *string_to_struct(char *str) {
 
   /* allocate appropriate memory for String based on sizeof str and int */
   ptr = malloc(sizeof(struct String));
+  if (ptr == NULL) {
+    return NULL;
+  }
 
   /* assign values for string and int initialized in String */
   ptr -> str /*how does it know I mean the str inside the struct?*/ = str;
