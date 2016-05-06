@@ -1,4 +1,5 @@
 #include <stdlib.h>
+
 int find_length(char *);
 
 /* string_to_struct 
@@ -23,4 +24,17 @@ struct String *string_to_struct(char *str) {
 
   /* return pointer to String */
   return ptr;
+}
+
+
+/* find_length loops through a given string and increments up
+   for ever char in the string; returns length */
+int find_length(char *s) {
+  int i;
+
+  for (i = 0; s[i] != '\0'; i++) {
+    i++;
+  }
+
+  return i;
 }
