@@ -1,9 +1,12 @@
 int print_char(char);
 
 void print_number(int n) {
+  int original_input;
   int length;
 
+  original_input = n;
   length = 1;
+
   while (n > 9) {
     n /= 10;
     length++;
@@ -14,7 +17,7 @@ void print_number(int n) {
   for (; length> 1; length--) {
     n *= 10;
   }
-  print_number(n);
+  print_number(original_input - n);
 }
 
 int main(void) {
