@@ -31,16 +31,33 @@ void print_string(char *s) {
    equivalent, till the whole int is printed */
 
 void print_number(int n) {
+  int original_input;
   int length;
 
+  original_input = n;
   length = 1;
+
+  /* base case - input is 1 digit, can print */
+  if (original_input < 9) {
+    print_char(n + '0');
+    return;
+  }
+
+  /* else */
+  /* reduce input to first digit */
   while (n > 9) {
     n /= 10;
     length++;
   }
 
+  /* print */
   print_char(n + '0');
-  
-  if (length > 1) {
-    print_number(n*10
+
+  /* bring val of n back to original power */
+  for (; length> 1; length--) {
+    n *= 10;
+  }
+
+  /* recursive call with remaining digits */
+  print_number(original_input - n);
 }
