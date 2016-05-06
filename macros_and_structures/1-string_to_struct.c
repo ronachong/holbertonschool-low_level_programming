@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "str_struct.h"
 
@@ -24,9 +25,11 @@ struct String *string_to_struct(char *str) {
   }
 
   /* assign values for string and int initialized in String */
-  ptr -> str /*how does it know I mean the str inside the struct?*/ = copy_string(str, str_length);
+  ptr->str /*how does it know I mean the str inside the struct?*/ = copy_string(str, str_length);
 
-  ptr -> length = str_length;
+  ptr->length = str_length;
+
+printf("The address of input str is %p. The address of copied string in struct is %p\n.", str, ptr -> str);
 
   /* return pointer to String */
   return ptr;
@@ -58,7 +61,7 @@ char *copy_string(char *s, int length) {
     return NULL;
   }
 
-  for (i = 0; i <= length; i++) {
+  for (i = 0; i < length; i++) {
     copy[i] = s[i];
   }
   return copy;
