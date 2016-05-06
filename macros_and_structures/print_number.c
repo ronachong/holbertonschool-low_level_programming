@@ -7,6 +7,11 @@ void print_number(int n) {
   original_input = n;
   length = 1;
 
+  if (original_input < 9) {
+    print_char(n + '0');
+    return;
+  }
+
   while (n > 9) {
     n /= 10;
     length++;
