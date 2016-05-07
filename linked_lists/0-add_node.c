@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "list.h"
 
 char *copy_string(char *);
 int find_length(char *);
