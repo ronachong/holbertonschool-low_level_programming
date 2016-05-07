@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
 
@@ -38,7 +37,6 @@ int add_node(List **list, char *content) {
   /* ELSE */
   /* find current tail node in list and make it point to newly-allocated node instead of NULL. */
   ptr_to_current_tail = find_end_of_list(list);
-  printf("ptr_to_current_tail is %p\n", (void *)ptr_to_current_tail);
   ptr_to_current_tail->next = ptr_to_node;
 
   return 0;
@@ -83,14 +81,11 @@ int find_length(char *s) {
 struct List *find_end_of_list(struct List **list) {
   struct List *ptr_to_node;
 
-  printf("Running find_end_of_list...\n");
-  
   /* initialize ptr to node as ptr to the head of the list */
   ptr_to_node = *list;
 
   while (ptr_to_node->next != NULL) {
     ptr_to_node = ptr_to_node->next;
-    printf("Updating pointer to 'next' node...\n");
   }
 
   return ptr_to_node;
