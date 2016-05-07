@@ -3,7 +3,7 @@
 
 char *copy_string(char *);
 int find_length(char *);
-int find_end_of_list(struct List *);
+struct List *find_end_of_list(struct List **);
 
 /* add_node takes in two inputs, 1) a pointer to the address of the first node in a list, /list/;
    and 2) a string, /content/, to insert into a new node in the list.
