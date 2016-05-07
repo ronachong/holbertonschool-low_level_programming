@@ -17,6 +17,7 @@ int find_end_of_list(struct List *);
 
 int add_node(List **list, char *content) {
   struct List *ptr_to_node;
+  struct List *ptr_to_current_tail;
   
   ptr_to_node = malloc(sizeof(struct List));
   if (ptr_to_node == NULL) {
@@ -27,6 +28,7 @@ int add_node(List **list, char *content) {
   ptr_to_node->next = NULL;
   
   /* find current tail node in list and make it point to newly-allocated node instead of NULL. */
+  ptr_to_current_tail->next = ptr_to_node;
 
   return 0;
 }
@@ -61,12 +63,21 @@ int find_length(char *s) {
 }
 
 
-/* find_end_of_list takes the head of a list, /head/,
-   and proceeds to check the /next/ pointer in each node in the list,
-   until it reaches a NULL pointer, incrementing each time.
+/* find_end_of_list takes the pointer to the head of a list, /list/,
+   and proceeds to the /next/ pointer in each node in the list,
+   until it reaches a NULL pointer.
 
-   It returns the index value for the current last node in the list.
+   It returns the pointer to the current last node in the list.
 */
-int find_end_of_list(struct List *list) {
-  ;
+struct List *find_end_of_list(struct List **list) {
+  struct List *ptr_to_node;
+  
+  /* initialize ptr to node as ptr to the head of the list */
+  ptr_to_node = *list;
+
+  while (ptr_to_node->next != NULL) {
+    ptr_to_node = ptr_to_node->next;
+  }
+
+  return ptr_to_node;
 }
