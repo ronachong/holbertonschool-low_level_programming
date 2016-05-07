@@ -8,11 +8,11 @@ int find_end_of_list(struct List *);
 /* add_node takes in two inputs, 1) a pointer to the address of the first node in a list, /list/;
    and 2) a string, /content/, to insert into a new node in the list.
 
-   add_node allocates space for a new node in the list, makes the string inside a copy of
-   /content/ and makes the pointer inside a pointer to the previous first node in the list.
+   add_node allocates space for a new node in the list, makes the string inside the node a copy of
+   /content/ and makes the /next/ pointer inside the node a pointer to NULL (tail of list).
 
-   Finally, add_node changes the value of /list/ to the address of the newly-created node, effect-
-   ively making the new node the first node of the list.
+   Finally, add_node changes the /next/ pointer of the current tail node of the list to point to
+   the new node, effectively making making the new node the new last node of the list.
 */
 
 int add_node(List **list, char *content) {
@@ -24,9 +24,8 @@ int add_node(List **list, char *content) {
   }
 
   ptr_to_node->str = copy_string(content);
-  ptr_to_node->next = *list;
+  ptr_to_node->next = NULL;
   
-  *list = ptr_to_node;
   return 0;
 }
 
@@ -59,6 +58,13 @@ int find_length(char *s) {
   return i;
 }
 
-int find_end_of_list(struct List *) {
+
+/* find_end_of_list takes the head of a list, /head/,
+   and proceeds to check the /next/ pointer in each node in the list,
+   until it reaches a NULL pointer, incrementing each time.
+
+   It returns the index value for the current last node in the list.
+*/
+int find_end_of_list(struct List *list) {
   ;
 }
