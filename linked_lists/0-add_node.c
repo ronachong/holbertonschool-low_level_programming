@@ -34,12 +34,25 @@ int add_node(List **list, char *content) {
    and returns the string.
 */
 char *copy_string(char *s) {
-  ;
+  int i;
+  int length;
+  char *copy;
+
+  length = find_length(s);
+  copy = malloc(sizeof(char)*length);
+  
+  for (i = 0; i < length; i++) {
+    copy[i] = s[i];
+  }
+  return copy;
 }
 
 /* find_length loops through a given string, incrementing up for every char,
    and returns the length of the string.
 */
 int find_length(char *s) {
-  ;
+  int i;
+  
+  for (i = 0; s[i] != '\0'; i++) {}
+  return i;
 }
