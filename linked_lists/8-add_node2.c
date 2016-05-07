@@ -26,6 +26,8 @@ int add_node(List **list, char *content) {
   ptr_to_node->str = copy_string(content);
   ptr_to_node->next = NULL;
   
+  /* find current tail node in list and make it point to newly-allocated node instead of NULL. */
+
   return 0;
 }
 
