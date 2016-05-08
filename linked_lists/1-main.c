@@ -31,6 +31,4 @@ void print_every_string_in_list(struct List *ptr_to_head_of_list) {
   }
 
   printf("%s\n", ptr_to_node-> str);
-
-  return ptr_to_node;
 }
