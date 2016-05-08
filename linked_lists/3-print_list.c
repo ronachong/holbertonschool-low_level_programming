@@ -9,6 +9,12 @@ void print_string(char *s);
 void print_list(List *list) {
   struct List *ptr_to_node;
 
+  /* if list is empty!! */
+  if (list == NULL) {
+    print_char('\n');
+    return;
+  }
+
   /* initialize ptr to node as ptr to the head of the list */
   ptr_to_node = list;
 
