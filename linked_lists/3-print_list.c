@@ -12,11 +12,11 @@ void print_list(List *list) {
   ptr_to_node = list;
 
   while (ptr_to_node->next != NULL) {
-    printf("%s\n", ptr_to_node->str);
+    print_string(ptr_to_node->str);
     ptr_to_node = ptr_to_node->next;
   }
 
-  printf("%s\n", ptr_to_node->str);
+  print_string(ptr_to_node->str);
 }
 
 /* print_string loops thru string input and prints every
