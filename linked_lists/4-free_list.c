@@ -13,7 +13,7 @@ void free_list(List *list) {
   List **array_of_ptrs;
 
   length = list_size(list);
-  ptr_to_node = *list;
+  ptr_to_node = list;
   array_of_ptrs = malloc(sizeof(List*)*length);
   if (array_of_ptrs == NULL) {
     return NULL;
