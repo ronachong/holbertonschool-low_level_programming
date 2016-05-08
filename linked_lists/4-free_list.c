@@ -16,7 +16,7 @@ void free_list(List *list) {
   ptr_to_node = list;
   array_of_ptrs = malloc(sizeof(List*)*length);
   if (array_of_ptrs == NULL) {
-    return NULL;
+    return;
   }
 
   /* free all the strings in list, and save ptr to each node to array */

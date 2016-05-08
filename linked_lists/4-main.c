@@ -19,5 +19,7 @@ int main(void)
   printf("The size of the list is %i\n", list_size(list));
   free_list(list);
   printf("The size of the list is %i\n", list_size(list));
+  printf("The next pointer of the head is %p\n", (void *)list->next);
+  printf("The string of the head is %s\n", list->str);
   return (0);
 }
