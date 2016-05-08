@@ -32,11 +32,8 @@ List *params_to_list(int ac, char **av) {
   struct List *ptr_to_head;
 
   ptr_to_head = NULL;
-  printf("Just made ptr_to_head NULL.\n");
-  printf("ac is %i\n", ac);
-  for (i = 1; i <= ac; i++) {
+  for (i = 1; i < ac; i++) {
     add_node(&ptr_to_head, av[i]);
-    printf("The current argument being processed is %i\n", i);
   }
 
   return ptr_to_head;
