@@ -18,10 +18,19 @@
         to the new node, using find_end_of_list
 	UNLESS the new node happens to be the only node for the list so far, in which case,
 	params_to_list changes the header pointer to point to the new node.
-      for every string element in /av/;
+      for every string element in /av/, using add_node;
    3) finally, params_to_list returns the head pointer.
 */
 
 List *params_to_list(int ac, char **av) {
-  ;
+  int i;
+  struct List *ptr_to_head;
+
+  *ptr_to_head = NULL;
+
+  for (i = 1; i <= ac; i++) {
+    add_node(&ptr_to_head, av[i]);
+  }
+
+  return ptr_to_head;
 }
