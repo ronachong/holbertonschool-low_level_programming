@@ -9,6 +9,7 @@ int main(void)
   List *list;
 
   list = NULL;
+  print_list(list);
   if (add_node(&list, "Holberton") == 1)
     return (1);
   if (add_node(&list, "School") == 1)
