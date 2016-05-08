@@ -12,12 +12,17 @@ void print_list(List *list) {
   /* initialize ptr to node as ptr to the head of the list */
   ptr_to_node = list;
 
+  /* print string, followed by comma and space, for every node but last */
   while (ptr_to_node->next != NULL) {
     print_string(ptr_to_node->str);
+    print_char(',');
+    print_char(' ');
     ptr_to_node = ptr_to_node->next;
   }
 
+  /* print string in last node, followed by new line */
   print_string(ptr_to_node->str);
+  print_char('\n');
 }
 
 /* print_string loops thru string input and prints every
