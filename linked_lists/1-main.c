@@ -26,9 +26,9 @@ void print_every_string_in_list(struct List *ptr_to_head_of_list) {
   ptr_to_node = ptr_to_head_of_list;
 
   while (ptr_to_node->next != NULL) {
-    printf("%s\n", ptr_to_node-> str);
+    printf("%s\n", ptr_to_node->str);
     ptr_to_node = ptr_to_node->next;
   }
 
-  printf("%s\n", ptr_to_node-> str);
+  printf("%s\n", ptr_to_node->str);
 }
