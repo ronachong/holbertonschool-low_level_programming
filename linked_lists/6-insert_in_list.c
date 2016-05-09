@@ -44,7 +44,7 @@ List *find_node_prior(List *ptr_to_head, int index) {
   int i;
   List *current_node_ptr;
 
-  for (i = 0, current_node_ptr = ptr_to_head; i < index; i++) {
+  for (i = 0, current_node_ptr = ptr_to_head; i < index && current_node_ptr->next != NULL; i++) {
     /* if i is one less than the index of node to insert, we've found
        the node prior; return! */
     if (i == index - 1) {
@@ -58,6 +58,7 @@ List *find_node_prior(List *ptr_to_head, int index) {
 
   /* if loop did not succeed... then probably index req'd
      is greater than size of list*/
+  print_string("Think the index was greater than length of list.\n");
   return NULL;
 }
 
