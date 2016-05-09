@@ -12,10 +12,9 @@
 */
 
 void free_list(List *list) {
-  int i;
   List *ptr_to_node;
 
-  for (i = 0; list != NULL; i++) {
+  while (list != NULL) {
     ptr_to_node = list;
     list = ptr_to_node->next;
     free(ptr_to_node->str);
