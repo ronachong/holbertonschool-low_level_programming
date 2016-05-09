@@ -6,6 +6,7 @@ List *find_node_prior(List *, int);
 int insert_new_node(List *, char *content, List*);
 char *copy_string(char *);
 void print_string(char *);
+struct List *find_end_of_list(struct List **);
 
 int insert_in_list(List **list, char *content, int index) {
   List *ptr_to_node_prior;
@@ -34,6 +35,7 @@ int insert_in_list(List **list, char *content, int index) {
     /* make next val for new node NULL (make new node equivalent to tail of list) */
     next_to_assign = NULL;
     print_string("next_to_assign val should be null.\n");
+    ptr_to_node_prior = find_end_of_list(list);
   } else {
     print_string("I don't see that return for find_node_prior was NULL.\n");
     /* store next value of node prior */
@@ -65,6 +67,26 @@ List *find_node_prior(List *ptr_to_head, int index) {
      is greater than size of list*/
   print_string("Think the index was greater than length of list.\n");
   return NULL;
+}
+
+
+/* find_end_of_list takes the pointer to the head of a list, /list/,                                        
+   and proceeds to the /next/ pointer in each node in the list,                                             
+   until it reaches a NULL pointer.                                                                         
+                                                                                                            
+   It returns the pointer to the current last node in the list.                                             
+*/
+struct List *find_end_of_list(struct List **list) {
+  struct List *ptr_to_node;
+
+  /* initialize ptr to node as ptr to the head of the list */
+  ptr_to_node = *list;
+
+  while (ptr_to_node->next != NULL) {
+    ptr_to_node = ptr_to_node->next;
+  }
+
+  return ptr_to_node;
 }
 
 
