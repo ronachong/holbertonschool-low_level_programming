@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include "list.h"
 
-/* print_every_string_in_list loops thru the list pointed to by                                             
-   list and increments up for every node in list, returning the
-   size of the list
+/* list_size loops thru the list pointed to by list and                                                 
+   increments up for every node in list, returning the                                                  
+   size of the list                                                                                    
 */
 int list_size(List *list) {
   int i;
