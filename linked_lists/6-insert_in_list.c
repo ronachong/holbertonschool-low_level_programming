@@ -52,7 +52,7 @@ List *find_node_prior(List *ptr_to_head, int index) {
 
   /* if loop did not succeed... then probably index req'd
      is greater than size of list*/
-  return -1; /* ATTN: will want to run add node-2 */
+  return NULL; /* ATTN: will want to run add node-2 */
 }
 
 
