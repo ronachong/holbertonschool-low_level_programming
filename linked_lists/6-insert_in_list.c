@@ -3,11 +3,9 @@
 
 int add_node(List **list, char *str);
 List *find_node_prior(List *, int);
-int add_node_to_end(List **, char *);
 int insert_new_node(List *, char *content, List*);
 char *copy_string(char *);
 void print_string(char *);
-struct List *find_end_of_list(struct List **);
 
 int insert_in_list(List **list, char *content, int index) {
   List *ptr_to_node_prior;
@@ -26,13 +24,16 @@ int insert_in_list(List **list, char *content, int index) {
 
   /* ELSE */
   /* find the node prior to node we want to insert */
-  ptr_to_node_prior = find_node_prior(*list, index);   
-  if (ptr_to_node_prior == NULL) {
-    return add_node_to_end(list, content);
-  }
+  ptr_to_node_prior = find_node_prior(*list, index);
 
-  /* store next value of node prior */
-  next_to_assign = ptr_to_node_prior->next;
+  /* if index req'd greater than size of list */
+  if (ptr_to_node_prior == NULL) {
+    /* make next val for new node NULL (make new node equivalent to tail of list) */
+    next_to_assign = NULL;
+  } else {
+    /* store next value of node prior */
+    next_to_assign = ptr_to_node_prior->next;
+  }
 
   /* create node we want to insert, with input string & the next val of the node prior, & insert in list */
   return insert_new_node(ptr_to_node_prior, content, next_to_assign);
@@ -57,56 +58,7 @@ List *find_node_prior(List *ptr_to_head, int index) {
 
   /* if loop did not succeed... then probably index req'd
      is greater than size of list*/
-  return NULL; /* ATTN: will want to run add_node_to_end */
-}
-
-
-/* add_node_to_end takes in two inputs, 1) a pointer to the address of the first node in a list, /list/;           
-   and 2) a string, /content/, to insert into a new node in the list.                                       
-                                                                                                            
-   add_node allocates space for a new node in the list, makes the string inside the node a copy of          
-   /content/ and makes the /next/ pointer inside the node a pointer to NULL (tail of list).                 
-                                                                                                            
-   Finally, add_node changes the /next/ pointer of the current tail node of the list to point to            
-   the new node, effectively making making the new node the new last node of the list.                      
-*/
-int add_node_to_end(List **list, char *content) {
-  struct List *ptr_to_node;
-  struct List *ptr_to_current_tail;
-
-  ptr_to_node = malloc(sizeof(struct List));
-  if (ptr_to_node == NULL) {
-    return 1;
-  }
-
-  ptr_to_node->str = copy_string(content);
-  ptr_to_node->next = NULL;
-
-  /* find current tail node in list and make it point to newly-allocated node instead of NULL. */
-  ptr_to_current_tail = find_end_of_list(list);
-  ptr_to_current_tail->next = ptr_to_node;
-
-  return 0;
-}
-
-
-/* find_end_of_list takes the pointer to the head of a list, /list/,                                        
-   and proceeds to the /next/ pointer in each node in the list,                                             
-   until it reaches a NULL pointer.                                                                         
-                                                                                                            
-   It returns the pointer to the current last node in the list.                                             
-*/
-struct List *find_end_of_list(struct List **list) {
-  struct List *ptr_to_node;
-
-  /* initialize ptr to node as ptr to the head of the list */
-  ptr_to_node = *list;
-
-  while (ptr_to_node->next != NULL) {
-    ptr_to_node = ptr_to_node->next;
-  }
-
-  return ptr_to_node;
+  return NULL;
 }
 
 
