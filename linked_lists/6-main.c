@@ -22,5 +22,9 @@ int main(void)
   if (insert_in_list(&list, "School", 2) == 1)
     return (1);
   print_list(list);
+  if (insert_in_list(&list, "School", 0) == 1)
+    return (1);
+  print_list(list);
+
   return (0);
 }
