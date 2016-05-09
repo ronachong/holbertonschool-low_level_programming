@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /* free_list
-   takes in a pointer to the first node in a list;
+   takes a pointer to the first node in a list;
    stores the addr to the first node in a temporary holder;
    re-assigns the head pointer to the next node in the list;
    uses the stored addr to free the string in the detached node;
