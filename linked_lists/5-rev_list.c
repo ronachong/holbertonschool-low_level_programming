@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include "list.h"
 
+void print_string(char *);
+
 /* rev_list takes in a pointer to the addr of the head of a list and
    reverses the order of the list by making each node point to its
    predecessor; and updating the pointer to the head to point to the
@@ -11,8 +13,10 @@ void rev_list(List **list) {
   List *prev_node_ptr;
   List *current_node_ptr;
 
+  print_string("rev_list running.\n");
   /* do nothing if list is empty */
   if (*list == NULL) {
+    print_string("Entered if conditional.\n");
     return;
   }
 
@@ -24,6 +28,7 @@ void rev_list(List **list) {
 
   /* for every node till the last node */
   while (current_node_ptr->next != NULL) {
+    print_string("\nEntered while loop.\n");
     /* make current node point to prior node */
     current_node_ptr->next = prev_node_ptr;
 
@@ -31,8 +36,15 @@ void rev_list(List **list) {
        & current node to be next node */
     prev_node_ptr = current_node_ptr;
     current_node_ptr = current_node_ptr->next;
+    print_string("Finished while loop.\n");
+    print_string("String in new 'current node' is ");
+    print_string(current_node_ptr->str);
+    print_string("\n");
   }
 
+  print_string("The string in the last 'current node' is ");
+  print_string(current_node_ptr->str);
+  print_string("\n");
   /* make last node point to prior node */
   current_node_ptr->next = prev_node_ptr;  
 
