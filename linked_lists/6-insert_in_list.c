@@ -59,11 +59,13 @@ List *find_node_prior(List *ptr_to_head, int index) {
 int insert_new_node(List *ptr_to_node_prior, char *str, List *next_to_assign) {
   struct List *ptr_to_node;
 
+  /* allocate space for node */
   ptr_to_node = malloc(sizeof(struct List));
   if (ptr_to_node == NULL) {
     return 1;
   }
 
+  /* assign string and next vals to node */
   ptr_to_node->str = copy_string(str);
   ptr_to_node->next = next_to_assign;
 
