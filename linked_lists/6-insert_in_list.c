@@ -4,6 +4,7 @@
 int add_node(List **list, char *str);
 List *find_node_prior(List *, int);
 List *create_new_node(char *content, List*);
+char *copy_string(char *);
 void print_string(char *);
 
 int insert_in_list(List **list, char *content, int index) {
