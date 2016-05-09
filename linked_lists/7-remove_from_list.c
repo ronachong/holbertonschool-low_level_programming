@@ -7,7 +7,7 @@ int insert_new_node(List *, char *content, List*);
 char *copy_string(char *);
 void print_string(char *);
 
-int remove_from_list(List **list, char *content, int index) {
+int remove_from_list(List **list, int index) {
   List *ptr_to_node_prior;
   List *ptr_to_node_to_free;
   List *ptr_to_node_after;
@@ -36,7 +36,7 @@ int remove_from_list(List **list, char *content, int index) {
   ptr_to_node_after = ptr_to_node_to_free->next;
 
   /* free string in node */
-  free(ptr_to_node_to_free->string);
+  free(ptr_to_node_to_free->str);
 
   /* free node itself */
   free(ptr_to_node_to_free);
