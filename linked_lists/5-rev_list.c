@@ -12,6 +12,7 @@ void print_string(char *);
 void rev_list(List **list) {
   List *prev_node_ptr;
   List *current_node_ptr;
+  List *next_node_ptr;
 
   print_string("rev_list running.\n");
   /* do nothing if list is empty */
@@ -29,13 +30,17 @@ void rev_list(List **list) {
   /* for every node till the last node */
   while (current_node_ptr->next != NULL) {
     print_string("\nEntered while loop.\n");
+
+    /* store pointer to next node */
+    next_node_ptr = current_node_ptr->next;
+
     /* make current node point to prior node */
     current_node_ptr->next = prev_node_ptr;
 
     /* update previous node to be current node
        & current node to be next node */
     prev_node_ptr = current_node_ptr;
-    current_node_ptr = current_node_ptr->next;
+    current_node_ptr = next_node_ptr;
     print_string("Finished while loop.\n");
     print_string("String in new 'current node' is ");
     print_string(current_node_ptr->str);
