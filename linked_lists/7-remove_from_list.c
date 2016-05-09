@@ -17,10 +17,18 @@ int remove_from_list(List **list, int index) {
     return 0;
   }
   
-  /* else, if index parameter 0
-  if (index == 0 || *list == NULL) {
-    hmm?
-  } */
+  /* else, if index parameter 0 */
+  if (index == 0) {
+    /* simply free string in node and node itself */
+    ptr_to_node_to_free = *list;
+    ptr_to_node_after = ptr_to_node_to_free->next;
+    free(ptr_to_node_to_free->str);
+    free(ptr_to_node_to_free);
+
+    /* make node after the new head*/
+    *list = ptr_to_node_after;
+    return 1;
+  }
 
   /* ELSE */
   /* find the node prior to node we want to insert */
