@@ -12,7 +12,7 @@ void rev_list(List **list) {
   List *current_node_ptr;
 
   /* do nothing if list is empty */
-  if (*list = NULL) {
+  if (*list == NULL) {
     return;
   }
 
