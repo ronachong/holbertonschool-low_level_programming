@@ -61,7 +61,6 @@ List *find_node_prior(List *ptr_to_head, int index) {
 
 List *create_new_node(char *str, List *next_to_assign) {
   struct List *ptr_to_node;
-  struct List *ptr_to_current_tail;
 
   ptr_to_node = malloc(sizeof(struct List));
   if (ptr_to_node == NULL) {
