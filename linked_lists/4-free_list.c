@@ -15,8 +15,6 @@ void free_list(List *list) {
   int i;
   List *ptr_to_node;
 
-  length = list_size(list);
-
   for (i = 0; list != NULL; i++) {
     ptr_to_node = list;
     list = ptr_to_node->next;
