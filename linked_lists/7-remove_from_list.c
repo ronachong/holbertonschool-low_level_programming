@@ -7,20 +7,20 @@ int insert_new_node(List *, char *content, List*);
 char *copy_string(char *);
 void print_string(char *);
 
-int insert_in_list(List **list, char *content, int index) {
+int remove_from_list(List **list, char *content, int index) {
   List *ptr_to_node_prior;
-  List *next_to_assign;
+  List *ptr_to_node_to_free;
+  List *ptr_to_node_after;
 
-  /* handle index parameter less than 0 */
-  if (index < 0) {
+  /* handle index parameter less than 0 or empty list */
+  if (index < 0 || *list == NULL) {
     return 0;
   }
   
-  /* else, if index parameter 0 or list is empty */
+  /* else, if index parameter 0
   if (index == 0 || *list == NULL) {
-    /* simply run add_node to make new node head */
-    return add_node(list, content);
-  }
+    hmm?
+  } */
 
   /* ELSE */
   /* find the node prior to node we want to insert */
@@ -28,15 +28,23 @@ int insert_in_list(List **list, char *content, int index) {
 
   /* if index req'd greater than size of list */
   if (ptr_to_node_prior == NULL) {
-    /* make next val for new node NULL (make new node equivalent to tail of list) */
-    next_to_assign = NULL;
-  } else {
-    /* store next value of node prior */
-    next_to_assign = ptr_to_node_prior->next;
+    return 0;
   }
 
-  /* create node we want to insert, with input string & the next val of the node prior, & insert in list */
-  return insert_new_node(ptr_to_node_prior, content, next_to_assign);
+  /* if not */
+  ptr_to_node_to_free = ptr_to_node_prior->next;
+  ptr_to_node_after = ptr_to_node_to_free->next;
+
+  /* free string in node */
+  free(ptr_to_node_to_free->string);
+
+  /* free node itself */
+  free(ptr_to_node_to_free);
+
+  /* make prior node point to node after free'd node */
+  ptr_to_node_prior->next = ptr_to_node_after;
+
+  return 1;
 }
 
 
@@ -59,24 +67,4 @@ List *find_node_prior(List *ptr_to_head, int index) {
   /* if loop did not succeed... then probably index req'd
      is greater than size of list*/
   return NULL;
-}
-
-
-int insert_new_node(List *ptr_to_node_prior, char *str, List *next_to_assign) {
-  struct List *ptr_to_node;
-
-  /* allocate space for node */
-  ptr_to_node = malloc(sizeof(struct List));
-  if (ptr_to_node == NULL) {
-    return 1;
-  }
-
-  /* assign string and next vals to node */
-  ptr_to_node->str = copy_string(str);
-  ptr_to_node->next = next_to_assign;
-
-  /* change the next val of node prior to pointer of new node */
-  ptr_to_node_prior->next = ptr_to_node;
-
-  return 0;
 }
