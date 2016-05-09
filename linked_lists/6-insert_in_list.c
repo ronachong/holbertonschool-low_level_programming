@@ -3,14 +3,13 @@
 
 int add_node(List **list, char *str);
 List *find_node_prior(List *, int);
-List *create_new_node(char *content, List*);
+int insert_new_node(List *, char *content, List*);
 char *copy_string(char *);
 void print_string(char *);
 
 int insert_in_list(List **list, char *content, int index) {
   List *ptr_to_node_prior;
   List *next_to_assign;
-  List *ptr_to_new_node;
 
   /* handle index parameter less than 0 */
   if (index < 0) {
@@ -30,11 +29,8 @@ int insert_in_list(List **list, char *content, int index) {
   /* store next value of node prior */
   next_to_assign = ptr_to_node_prior->next;
 
-  /* create node we want to insert, with input string & the next val of the node prior */
-  ptr_to_new_node = create_new_node(content, next_to_assign);
-
-  /* change the next val of node prior to pointer of new node */
-  ptr_to_node_prior->next = ptr_to_new_node;
+  /* create node we want to insert, with input string & the next val of the node prior, & insert in list */
+  return insert_new_node(ptr_to_node_prior, content, next_to_assign);
 }
 
 
@@ -60,7 +56,7 @@ List *find_node_prior(List *ptr_to_head, int index) {
 }
 
 
-List *create_new_node(char *str, List *next_to_assign) {
+int insert_new_node(List *ptr_to_node_prior, char *str, List *next_to_assign) {
   struct List *ptr_to_node;
 
   ptr_to_node = malloc(sizeof(struct List));
@@ -71,5 +67,8 @@ List *create_new_node(char *str, List *next_to_assign) {
   ptr_to_node->str = copy_string(str);
   ptr_to_node->next = next_to_assign;
 
-  return ptr_to_node;
+  /* change the next val of node prior to pointer of new node */
+  ptr_to_node_prior->next = ptr_to_node;
+
+  return 0;
 }
