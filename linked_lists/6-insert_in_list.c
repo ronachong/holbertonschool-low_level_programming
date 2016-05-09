@@ -11,6 +11,8 @@ int insert_in_list(List **list, char *content, int index) {
   List *ptr_to_node_prior;
   List *next_to_assign;
 
+  print_string("\n");
+
   /* handle index parameter less than 0 */
   if (index < 0) {
     return 0;
@@ -28,9 +30,12 @@ int insert_in_list(List **list, char *content, int index) {
 
   /* if index req'd greater than size of list */
   if (ptr_to_node_prior == NULL) {
+    print_string("I see that return for find_node_prior was NULL.\n");
     /* make next val for new node NULL (make new node equivalent to tail of list) */
     next_to_assign = NULL;
+    print_string("next_to_assign val should be null.\n");
   } else {
+    print_string("I don't see that return for find_node_prior was NULL.\n");
     /* store next value of node prior */
     next_to_assign = ptr_to_node_prior->next;
   }
@@ -65,19 +70,25 @@ List *find_node_prior(List *ptr_to_head, int index) {
 
 int insert_new_node(List *ptr_to_node_prior, char *str, List *next_to_assign) {
   struct List *ptr_to_node;
+  print_string("insert_new_node running.\n");
 
   /* allocate space for node */
   ptr_to_node = malloc(sizeof(struct List));
   if (ptr_to_node == NULL) {
+    print_string("malloc for new node failed.\n");
     return 1;
   }
 
   /* assign string and next vals to node */
   ptr_to_node->str = copy_string(str);
+  print_string(ptr_to_node->str);
+  print_string(" is the string in new node.\n");
   ptr_to_node->next = next_to_assign;
 
   /* change the next val of node prior to pointer of new node */
   ptr_to_node_prior->next = ptr_to_node;
+  print_string(ptr_to_node_prior->str);
+  print_string(" is the string in node prior.\n");
 
   return 0;
 }
