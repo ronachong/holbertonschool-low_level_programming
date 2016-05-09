@@ -7,7 +7,7 @@ List *create_new_node(char *content, List*);
 void print_string(char *);
 
 int insert_in_list(List **list, char *content, int index) {
-  List *node_prior_ptr;
+  List *ptr_to_node_prior;
   List *next_to_assign;
   List *ptr_to_new_node;
 
@@ -27,7 +27,7 @@ int insert_in_list(List **list, char *content, int index) {
   ptr_to_node_prior = find_node_prior(*list, index);   
 
   /* store next value of node prior */
-  next_to_assign = node_prior_ptr->next;
+  next_to_assign = ptr_to_node_prior->next;
 
   /* create node we want to insert, with input string & the next val of the node prior */
   ptr_to_new_node = create_new_node(content, next_to_assign);
