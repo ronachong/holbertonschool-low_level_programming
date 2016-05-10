@@ -23,9 +23,9 @@ int print_content(int argc, char **argv) {
   /* might want to add perror here? */
   if (fd == -1) {
     perror("open(argv[1], O_RDONLY)");
+    return 0;
   }
 
-  whil
   /* read file contents into buffer & print till all contents read */
   read_and_print(fd, buffer, 32);
 
@@ -42,13 +42,15 @@ int check_arguments (int argc) {
   return 1;
 }
 
+
 int read_and_print(int fd, char *buffer, int bytes) {
-  int bytes_read_and_written;
+  int bytes_read_into_buffer;
 
-  read(fd, buffer, bytes);
-  bytes_read_and_written = write(1, buffer, bytes);
+  bytes_read_into_buffer = read(fd, buffer, bytes);
+  write(1, buffer, bytes_read_into_buffer);
 
-  if (bytes_read_and_written == bytes) {
+  /* recursive call */
+  if (bytes_read_into_buffer == bytes) {
     printf("I think there's still more to read to buffer and write.\n");
     return read_and_print(fd, buffer, bytes);
   }
