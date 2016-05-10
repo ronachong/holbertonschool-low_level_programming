@@ -18,9 +18,15 @@ int print_content(int argc, char **argv) {
     return 0;
   }
 
+  printf("The code runs here.\n");
+
   /* else */
   /* open file with name of cmd line arg, with read only permissions */
   fd = open(argv[1], O_RDONLY);
+  
+  /* might want to add perror here? */
+
+  printf("The fd is %i\n", fd);
 
   /*
   contents = read(argv, other params);
