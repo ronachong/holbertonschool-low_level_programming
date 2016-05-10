@@ -1,3 +1,5 @@
+#include "0-header.h"
+
 /* print_content 
    checks if the number of arguments is right,
    then opens the file with RD permissions (assuming the file already exists),
@@ -10,7 +12,7 @@ int print_content(int argc, char **argv) {
   argv = argv;
   char * /*(or buffer?)*/ contents;
 
-  print_string("Test.\n");
+  print_string("Test. Test again.\n");
 
   /*
   if (check_arguments(argc) == 0) {
@@ -36,5 +38,24 @@ int check_arguments (int argc) {
 
 
 int print_string(char *string) {
-  return (write(1, string, 32)); /* not sure if string is of right type (const void *buf) for write */
+  int bytes_written;
+  int bytes_to_write;
+
+  bytes_to_write = 32;
+  bytes_written = write(1, string, bytes_to_write);
+  printf("bytes written = %i\n", bytes_written);
+  
+  if (bytes_to_write == bytes_written) {
+    printf("bytes written = bytes to write.\n");
+    return print_string(string);
+  }
+
+  return 1;
+
+  /* not sure if string is of right type (const void *buf) for write */
+}
+
+
+int print_char(char c) {
+  return (write(1, &c, 1));
 }
