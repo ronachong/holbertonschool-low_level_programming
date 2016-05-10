@@ -41,12 +41,15 @@ int print_string(char *string) {
   int bytes_written;
   int bytes_to_write;
 
+  printf("running print_string.\n");
+
   bytes_to_write = 32;
   bytes_written = write(1, string, bytes_to_write);
   printf("bytes written = %i\n", bytes_written);
-  
+  printf("bytes to write = %i\n", bytes_to_write);
+
   if (bytes_to_write == bytes_written) {
-    printf("bytes written = bytes to write.\n");
+    printf("entering if statement.\n\n");
     return print_string(string);
   }
 
