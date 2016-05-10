@@ -7,10 +7,8 @@ EXE := 0-print_content
 all: $(EXE)
 
 $(EXE): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o $(EXE)
 
 %.o: %.c $(DEPS)
-	$(CC) $(CFLAGS) -c $< -o $@
 
 re: clean all
 
