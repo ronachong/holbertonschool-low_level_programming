@@ -1,8 +1,3 @@
-#include  <unistd.h>
-
-int check_arguments(int);
-int print_string(char *string);
-
 /* print_content 
    checks if the number of arguments is right,
    then opens the file with RD permissions (assuming the file already exists),
@@ -14,6 +9,8 @@ int print_content(int argc, char **argv) {
   argc = argc;
   argv = argv;
   char * /*(or buffer?)*/ contents;
+
+  print_string("Test.\n");
 
   /*
   if (check_arguments(argc) == 0) {
@@ -39,5 +36,5 @@ int check_arguments (int argc) {
 
 
 int print_string(char *string) {
-  return (write(1, string, 32); /* not sure if string is of right type (const void *buf) for write */
+  return (write(1, string, 32)); /* not sure if string is of right type (const void *buf) for write */
 }
