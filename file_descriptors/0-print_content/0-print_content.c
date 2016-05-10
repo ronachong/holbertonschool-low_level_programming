@@ -51,7 +51,6 @@ int read_and_print(int fd, char *buffer, int bytes) {
 
   /* recursive call */
   if (bytes_read_into_buffer == bytes) {
-    printf("I think there's still more to read to buffer and write.\n");
     return read_and_print(fd, buffer, bytes);
   }
 
