@@ -8,10 +8,8 @@
 */
 
 int print_content(int argc, char **argv) {
-  int fd;
-  argc = argc;
-  
-  char * /*(or buffer?)*/ contents;
+  int fd;  
+  char *buffer[32];
 
   
   if (check_arguments(argc) == 0) {
@@ -27,9 +25,10 @@ int print_content(int argc, char **argv) {
     perror("open(argv[1], O_RDONLY)");
   }
 
-   /*
-  contents = read(argv, other params);
-  write(contents, params including std output); */
+  /* read contents of file and save to var */
+  read(fd, buffer, 32);
+ 
+  /*write(contents, params including std output); */
 
   return 1;
 }
