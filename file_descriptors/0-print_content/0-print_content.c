@@ -56,8 +56,20 @@ int check_arguments (int argc) {
 int read_and_print(int fd, char *buffer, int bytes) {
   int bytes_read_into_buffer;
 
+  /* read contents of file into buffer & store return
+     into var; handle any errors if they occur */
   bytes_read_into_buffer = read(fd, buffer, bytes);
-  write(1, buffer, bytes_read_into_buffer);
+  if (bytes_read_into_buffer == -1) {
+    perror("read(fd, buffer, bytes");
+    return 0;
+  }
+
+  /* write chars read into buffer to std output (handling
+   * errors if they occur) */
+  if (write(1, buffer, bytes_read_into_buffer) == -1) {
+    perror("write(fd, buffer, bytes");
+    return 0;
+  }
 
   /* recursive call */
   if (bytes_read_into_buffer == bytes) {
