@@ -1,5 +1,7 @@
+#include  <unistd.h>
+
 int check_arguments(int);
-int print_string(char *c);
+int print_string(char *string);
 
 /* print_content 
    checks if the number of arguments is right,
@@ -9,18 +11,22 @@ int print_string(char *c);
 */
 
 int print_content(int argc, char **argv) {
-  char *(or buffer?) contents;
+  argc = argc;
+  argv = argv;
+  char * /*(or buffer?)*/ contents;
 
+  /*
   if (check_arguments(argc) == 0) {
     return 0;
   }
 
-  /* open(argv, other params);
+  open(argv, other params);
   contents = read(argv, other params);
   write(contents, params including std output); */
 
   return 1;
 }
+
 
 int check_arguments (int argc) {
   if (argc != 2) {
@@ -29,4 +35,9 @@ int check_arguments (int argc) {
   
   /* else */
   return 1;
+}
+
+
+int print_string(char *string) {
+  return (write(1, string, 32); /* not sure if string is of right type (const void *buf) for write */
 }
