@@ -18,17 +18,16 @@ int print_content(int argc, char **argv) {
     return 0;
   }
 
-  printf("The code runs here.\n");
-
-  /* else */
+   /* else */
   /* open file with name of cmd line arg, with read only permissions */
   fd = open(argv[1], O_RDONLY);
   
   /* might want to add perror here? */
+  if (fd == -1) {
+    perror("open(argv[1], O_RDONLY)");
+  }
 
-  printf("The fd is %i\n", fd);
-
-  /*
+   /*
   contents = read(argv, other params);
   write(contents, params including std output); */
 
