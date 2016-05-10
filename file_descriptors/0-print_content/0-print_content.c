@@ -25,11 +25,9 @@ int print_content(int argc, char **argv) {
     perror("open(argv[1], O_RDONLY)");
   }
 
-  /* read 32 bytes of file contents into buffer */
-  read(fd, buffer, 32);
-
-  /* write 32 bytes of buffer to std. ouput */
-  write(1, buffer, 32);
+  whil
+  /* read file contents into buffer & print till all contents read */
+  read_and_print(fd, buffer, 32);
 
   return 1;
 }
@@ -40,6 +38,21 @@ int check_arguments (int argc) {
     return 0;
   }
   
+  /* else */
+  return 1;
+}
+
+int read_and_print(int fd, char *buffer, int bytes) {
+  int bytes_read_and_written;
+
+  read(fd, buffer, bytes);
+  bytes_read_and_written = write(1, buffer, bytes);
+
+  if (bytes_read_and_written == bytes) {
+    printf("I think there's still more to read to buffer and write.\n");
+    return read_and_print(fd, buffer, bytes);
+  }
+
   /* else */
   return 1;
 }
