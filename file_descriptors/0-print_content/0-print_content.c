@@ -8,8 +8,9 @@
 */
 
 int print_content(int argc, char **argv) {
+  int fd;
   argc = argc;
-  argv = argv;
+  
   char * /*(or buffer?)*/ contents;
 
   
@@ -17,8 +18,11 @@ int print_content(int argc, char **argv) {
     return 0;
   }
 
+  /* else */
+  /* open file with name of cmd line arg, with read only permissions */
+  fd = open(argv[1], O_RDONLY);
+
   /*
-  open(argv, other params);
   contents = read(argv, other params);
   write(contents, params including std output); */
 
@@ -34,6 +38,7 @@ int check_arguments (int argc) {
   /* else */
   return 1;
 }
+
 
 /*
 int print_string(char *string) {
