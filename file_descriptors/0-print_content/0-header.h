@@ -9,5 +9,4 @@
 
 int print_content(int, char **);
 int check_arguments(int);
-int print_string(char *string);
-int print_char(char c);
+int read_and_print(int fd, char*buffer, int bytes);
