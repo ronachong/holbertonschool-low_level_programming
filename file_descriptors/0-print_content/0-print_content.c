@@ -33,6 +33,11 @@ int print_content(int argc, char **argv) {
 }
 
 
+/* check_arguments checks if the right number of arguments
+   for print_content has been passed, and returns 1 for yes,
+   0 for no.
+*/
+
 int check_arguments (int argc) {
   if (argc != 2) {
     return 0;
@@ -42,6 +47,11 @@ int check_arguments (int argc) {
   return 1;
 }
 
+
+/* read_and print reads from a file to a buffer and prints
+   from buffer continuously until all contents have been
+   printed.
+*/
 
 int read_and_print(int fd, char *buffer, int bytes) {
   int bytes_read_into_buffer;
@@ -56,32 +66,4 @@ int read_and_print(int fd, char *buffer, int bytes) {
 
   /* else */
   return 1;
-}
-
-
-/*
-int print_string(char *string) {
-  int bytes_written;
-  int bytes_to_write;
-
-  printf("running print_string.\n");
-
-  bytes_to_write = 32;
-  bytes_written = write(1, string, bytes_to_write);
-  printf("bytes written = %i\n", bytes_written);
-  printf("bytes to write = %i\n", bytes_to_write);
-
-  if (bytes_to_write == bytes_written) {
-    printf("entering if statement.\n\n");
-    return print_string(string);
-  }
-
-  return 1;
-
-  * not sure if string is of right type (const void *buf) for write *
-}
-*/
-
-int print_char(char c) {
-  return (write(1, &c, 1));
 }
