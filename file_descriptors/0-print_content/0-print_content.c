@@ -9,7 +9,7 @@
 
 int print_content(int argc, char **argv) {
   int fd;  
-  char *buffer[32];
+  char buffer[32];
 
   
   if (check_arguments(argc) == 0) {
@@ -25,8 +25,9 @@ int print_content(int argc, char **argv) {
     perror("open(argv[1], O_RDONLY)");
   }
 
-  /* read contents of file and save to var */
+  /* read 32 bytes of file contents into buffer */
   read(fd, buffer, 32);
+  printf("Buffer contains: \n%s", buffer);
  
   /*write(contents, params including std output); */
 
