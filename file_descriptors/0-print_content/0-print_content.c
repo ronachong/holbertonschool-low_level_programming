@@ -12,13 +12,12 @@ int print_content(int argc, char **argv) {
   argv = argv;
   char * /*(or buffer?)*/ contents;
 
-  print_string("Test. Test again.\n");
-
-  /*
+  
   if (check_arguments(argc) == 0) {
     return 0;
   }
 
+  /*
   open(argv, other params);
   contents = read(argv, other params);
   write(contents, params including std output); */
@@ -36,7 +35,7 @@ int check_arguments (int argc) {
   return 1;
 }
 
-
+/*
 int print_string(char *string) {
   int bytes_written;
   int bytes_to_write;
@@ -55,9 +54,9 @@ int print_string(char *string) {
 
   return 1;
 
-  /* not sure if string is of right type (const void *buf) for write */
+  * not sure if string is of right type (const void *buf) for write *
 }
-
+*/
 
 int print_char(char c) {
   return (write(1, &c, 1));
