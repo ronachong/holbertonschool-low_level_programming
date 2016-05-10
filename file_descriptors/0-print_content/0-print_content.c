@@ -27,9 +27,7 @@ int print_content(int argc, char **argv) {
   }
 
   /* read file contents into buffer & print till all contents read */
-  read_and_print(fd, buffer, 32);
-
-  return 1;
+  return read_and_print(fd, buffer, 32);
 }
 
 
