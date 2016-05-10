@@ -27,9 +27,9 @@ int print_content(int argc, char **argv) {
 
   /* read 32 bytes of file contents into buffer */
   read(fd, buffer, 32);
-  printf("Buffer contains: \n%s", buffer);
- 
-  /*write(contents, params including std output); */
+
+  /* write 32 bytes of buffer to std. ouput */
+  write(1, buffer, 32);
 
   return 1;
 }
