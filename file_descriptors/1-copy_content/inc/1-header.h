@@ -7,6 +7,6 @@
 #include <fcntl.h>
 
 /* int print_content(int, char **); */
-/* int check_arguments(int); */
 int copy_content(int argc, char **argv);
+int check_arguments(int);
 int read_and_print(int fd, char*buffer, int bytes);
