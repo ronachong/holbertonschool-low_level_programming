@@ -11,13 +11,16 @@ int print_content(int argc, char **argv) {
   int i;
   int fd;  
   char buffer[18];
-  
+  char error[5] = "cat: ";
+
   for (i = 1; i < argc; i++) {
     /* open file with name of cmd line arg, with read only permissions */
     fd = open(argv[i], O_RDONLY);
   
     /* handle any errors */
     if (fd == -1) {
+      write(1, error, 5);
+      write(1, argv[i], 5);
       perror("open(argv[1], O_RDONLY)");
       return 0;
       }
