@@ -19,3 +19,6 @@ re: clean all
 
 clean:
 	rm -rf $(OBJECTS)
+
+delete: clean
+	rm -f $(EXE)
