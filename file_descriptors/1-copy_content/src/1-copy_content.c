@@ -4,6 +4,7 @@ int copy_content(int argc, char **argv) {
   int fd_origin;
   int fd_dest;
   char buffer[18];
+  int success;
 
   
   if (check_arguments(argc) == 0) {
@@ -32,7 +33,12 @@ int copy_content(int argc, char **argv) {
 
   /* read contents of origin file into buffer & write to destination file till
    * all contents read */
-  return read_and_write(fd_origin, fd_dest, buffer, 18);
+  success = read_and_write(fd_origin, fd_dest, buffer, 18);
+
+  close(fd_origin);
+  close(fd_dest);
+
+  return success;
 }
 
 
