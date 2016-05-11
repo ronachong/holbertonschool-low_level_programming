@@ -1,4 +1,4 @@
-#include "0-header.h"
+#include "3-header.h"
 
 /* main file takes in arguments (i.e. string for file name) and passes it along to
    print_content */

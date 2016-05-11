@@ -1,52 +1,33 @@
-#include "0-header.h"
+#include "3-header.h"
 
 /* print_content 
    checks if the number of arguments is right,
-   then opens the file with RD permissions (assuming the file already exists),
-   and reads the file,
-   printing contents to std output.
+   opens the file passed from command line,
+   reads its contents,
+   and writes to std. output.
 */
 
 int print_content(int argc, char **argv) {
+  int i;
   int fd;  
   char buffer[18];
-  int success;
-
   
-  if (check_arguments(argc) == 0) {
-    return 0;
+  for (i = 1; i < argc; i++) {
+    /* open file with name of cmd line arg, with read only permissions */
+    fd = open(argv[i], O_RDONLY);
+  
+    /* handle any errors */
+    if (fd == -1) {
+      perror("open(argv[1], O_RDONLY)");
+      return 0;
+      }
+
+    /* read file contents into buffer & print till all contents read */
+    read_and_print(fd, buffer, 18);
+  
+    close(fd);
+  
   }
-
-   /* else */
-  /* open file with name of cmd line arg, with read only permissions */
-  fd = open(argv[1], O_RDONLY);
-  
-  /* handle any errors */
-  if (fd == -1) {
-    perror("open(argv[1], O_RDONLY)");
-    return 0;
-  }
-
-  /* read file contents into buffer & print till all contents read */
-  success = read_and_print(fd, buffer, 18);
-  
-  close(fd);
-  
-  return success;
-}
-
-
-/* check_arguments checks if the right number of arguments
-   for print_content has been passed, and returns 1 for yes,
-   0 for no.
-*/
-
-int check_arguments (int argc) {
-  if (argc != 2) {
-    return 0;
-  }
-  
-  /* else */
   return 1;
 }
 
