@@ -21,7 +21,7 @@ int print_content(int argc, char **argv) {
     /* handle any errors */
     if (fd == -1) {
       write(1, error, 5);
-      write(1, argv[i], 5);
+      write(1, argv[i], length(argv[i]));
       write(1, error2, 2);
       perror("\0");
       return 0;
@@ -34,6 +34,12 @@ int print_content(int argc, char **argv) {
   
   }
   return 1;
+}
+
+int length(char *s) {
+  int i;
+  for (i = 0; s[i] != '\0'; i++);
+  return i;
 }
 
 
