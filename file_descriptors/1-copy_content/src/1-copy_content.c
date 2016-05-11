@@ -22,7 +22,7 @@ int copy_content(int argc, char **argv) {
 
   /* open file with name of 2nd cmd line arg, with read/write permissions &
    * create option if file does not exist, -rw-r--r-- */
-  fd_dest = open(argv[2], O_RDWR | O_CREAT, 00644);
+  fd_dest = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 00644);
   
   /* handle any errors */
   if (fd_dest == -1) {
