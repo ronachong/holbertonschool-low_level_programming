@@ -1,7 +1,8 @@
 #include "1-header.h"
 
 int copy_content(int argc, char **argv) {
-  int fd;  
+  int fd_origin;
+  int fd_dest;
   char buffer[18];
 
   
@@ -10,12 +11,22 @@ int copy_content(int argc, char **argv) {
   }
 
   /* else */
-  /* open file with name of cmd line arg, with read only permissions */
-  fd = open(argv[1], O_RDONLY);
+  /* open file with name of 1st cmd line arg, with read only permissions */
+  fd_origin = open(argv[1], O_RDONLY);
   
   /* handle any errors */
-  if (fd == -1) {
-    perror("open(argv[1], O_RDONLY)");
+  if (fd_origin == -1) {
+    perror("open(argv[1], O_RDONLY) (opening file to copy)");
+    return 0;
+  }
+
+  /* open file with name of 2nd cmd line arg, with read/write permissions &
+   * create option if file does not exist, -rw-r--r-- */
+  fd__dest = open(argv[2], O_RDWR | O_CREAT, 00644);
+  
+  /* handle any errors */
+  if (fd_dest == -1) {
+    perror("open(argv[2], O_RDWR | O_CREAT, 00644)");
     return 0;
   }
 
