@@ -10,6 +10,7 @@
 int print_content(int argc, char **argv) {
   int fd;  
   char buffer[18];
+  int success;
 
   
   if (check_arguments(argc) == 0) {
@@ -27,7 +28,11 @@ int print_content(int argc, char **argv) {
   }
 
   /* read file contents into buffer & print till all contents read */
-  return read_and_print(fd, buffer, 18);
+  success = read_and_print(fd, buffer, 18);
+  
+  close(fd);
+  
+  return success;
 }
 
 
