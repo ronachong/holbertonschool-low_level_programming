@@ -1,10 +1,12 @@
-#include "1-header.h"
+#include "2-header.h"
 
 int main(int argc, char **argv) {
-  if (copy_content(argc, argv) == 1) {
+  if (print_permissions(argc, argv) == 1) {
+    print_char('\n');
     return 0;
   }
   
   /* else */
   return 1;
+
 }

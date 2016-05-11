@@ -1,11 +1,11 @@
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra -pedantic -Iinc
 VPATH := src:inc
-DEPS := inc/1-header.h
+DEPS := inc/2-header.h
 
-OBJ := 1-main.o 1-copy_content.o
+OBJ := 2-main.o 2-print_permissions.o
 OBJECTS := $(patsubst %, obj/%, $(OBJ))
-EXE := 1-copy_content
+EXE := 2-print_permissions
 
 all: $(EXE)
 
