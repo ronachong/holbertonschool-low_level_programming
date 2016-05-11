@@ -1,5 +1,3 @@
-#include <stdio.h> /*get rid of this later */
-
 #include  <unistd.h>
 
 /* headers for open */
