@@ -22,7 +22,7 @@ int copy_content(int argc, char **argv) {
 
   /* open file with name of 2nd cmd line arg, with read/write permissions &
    * create option if file does not exist, -rw-r--r-- */
-  fd__dest = open(argv[2], O_RDWR | O_CREAT, 00644);
+  fd_dest = open(argv[2], O_RDWR | O_CREAT, 00644);
   
   /* handle any errors */
   if (fd_dest == -1) {
@@ -31,7 +31,7 @@ int copy_content(int argc, char **argv) {
   }
 
   /* read file contents into buffer & print till all contents read */
-  return read_and_print(fd, buffer, 18);
+  return read_and_print(fd_origin, buffer, 18);
 }
 
 
@@ -80,4 +80,5 @@ int read_and_print(int fd, char *buffer, int bytes) {
   }
 
   /* else */
-  return 1
+  return 1;
+}
