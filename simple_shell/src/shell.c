@@ -1,3 +1,4 @@
+#include "header.h"
 /* This file will contain the shell function for a simple shell. */
 
 int shell(void)
