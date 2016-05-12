@@ -1,5 +1,5 @@
 #include "header.h"
-#define SIZE 1
+#define SIZE 2
 
 /*
  * print_prompt prints the prompt for a shell.
@@ -10,7 +10,7 @@
 int print_prompt(void)
 {
   int byte_return;
-  char prompt[SIZE] = "$";
+  char prompt[SIZE] = "$ ";
 
   byte_return = write(1, &prompt, SIZE);
   if (byte_return == -1) {
