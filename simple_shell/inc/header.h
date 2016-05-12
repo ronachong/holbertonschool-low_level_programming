@@ -2,7 +2,7 @@
    shell program */
 
 /* includes */
-#include <unistd.h> /* write */
+#include <unistd.h> /* write, fork */
 #include <stdio.h> /* perror */
 #include <stdlib.h> /* malloc, free */
 

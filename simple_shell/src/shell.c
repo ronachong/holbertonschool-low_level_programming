@@ -9,9 +9,10 @@ int shell(void)
   print_prompt();
   std_input = read_line(0);
 
-  pid = fork(?);
+  pid = fork();
   if (pid == -1) {
-    /* do error handling */;
+    perror("fork()");
+    return 0;
   }
   if (pid == 0) {
     /* execute cmd */;
