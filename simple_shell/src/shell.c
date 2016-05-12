@@ -7,7 +7,7 @@ int shell(void)
   pid_t pid;
 
   print_prompt();
-  std_input = read_std_input();
+  std_input = read_line(0);
 
   pid = fork(?);
   if (pid == -1) {
