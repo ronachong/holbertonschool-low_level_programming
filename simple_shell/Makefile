@@ -1,16 +1,17 @@
 CC := gcc
 CFLAGS := -Wall -Werror -Wextra -pedantic -Iinc
-VPATH := src:inc
-DEPS := inc/header.h
+VPATH := src:lib
+DEPS := inc/header.h inc/libshell.h
 
-OBJ := main.o
+LIB := libshell.a
+OBJ := main.o shell.o
 OBJECTS := $(patsubst %, obj/%, $(OBJ))
 EXE := simple_shell
 
 all: $(EXE)
 
 $(EXE): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o $(EXE)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIB) -o $(EXE)
 
 obj/%.o: %.c $(DEPS)
 	$(CC) -c $(CFLAGS) $< -o $@
