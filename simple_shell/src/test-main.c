@@ -3,12 +3,13 @@
 /* use this to test functions being iterated upon */
 
 int main(void) {
-  int pp;
+  char *std_input;
 
-  pp = print_prompt();
-  if (pp  == 1)
-    return 0;
-  else
-    printf("print_prompt printed %i bytes\n", pp);
-    return 1;
+  print_prompt();
+
+  std_input = read_line(0);
+  printf("this was read from std. input: %s\n", std_input);
+  free(std_input);
+
+  return 1;
 }
