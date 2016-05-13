@@ -2,14 +2,19 @@
 
 /* use this to test functions being iterated upon */
 
-int main(void) {
-  char *std_input;
+int main(void)
+{
+  int i;
+  char **argv;
 
   print_prompt();
 
-  std_input = read_line(0);
-  printf("this was read from std. input: %s\n", std_input);
-  free(std_input);
+  argv = get_argv();
+  printf("First argument is %s\n", argv[0]);
+  for (i = 0; argv[i] != NULL; i++) {
+    printf("'%s', ", argv[i]);
+  }
+  printf("\n");
 
   return 1;
 }
