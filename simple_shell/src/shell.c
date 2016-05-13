@@ -9,6 +9,7 @@ int shell(int ac, char **av, char **env)
 
   ac = ac;
   av = av;
+  status = NULL;
 
   print_prompt();
   argv = get_argv();
@@ -19,7 +20,7 @@ int shell(int ac, char **av, char **env)
     return 0;
   }
   if (pid == 0) {
-    execve("/usr/bin/ssh-add", ["usr/bin/ssh-add", "foo"], env); /* later: execve(argv[0], argv, env); */
+    execve(argv[0], argv, env); /* later: execve(argv[0], argv, env); */
     /* potentially pass values to parent? */
     return 1 /* exit */;
   }
@@ -31,7 +32,8 @@ int shell(int ac, char **av, char **env)
   }
 
   /* free everything: including, argv pointer and strings inside */
-  free_argv();
+  free_argv(argv);
+  return 1;
 
   /* return any values for success? or error? */
 }
