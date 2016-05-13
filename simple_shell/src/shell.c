@@ -1,9 +1,9 @@
 #include "header.h"
 /* This file will contain the shell function for a simple shell. */
 
-int shell(void)
+int shell(int ac, char **av, char **env)
 {
-  char **std_input;
+  char **argv;
   pid_t pid;
 
   print_prompt();
@@ -15,7 +15,7 @@ int shell(void)
     return 0;
   }
   if (pid == 0) {
-    /* execute cmd */;
+    execve(argv[0], argv, env);
     /* potentially pass values to parent? */;
     /* exit */;
   }
