@@ -2,7 +2,7 @@
 
 /* use this to test functions being iterated upon */
 
-int main(void)
+int main(int ac, char **av, char **env)
 {
   int i;
   char **argv;
@@ -15,6 +15,11 @@ int main(void)
     printf("'%s', ", argv[i]);
   }
   printf("\n");
+
+  ac = ac;
+  av = av;
+  execve(argv[0], argv, env);
+  printf("Does.. this work?\n");
 
   return 1;
 }
