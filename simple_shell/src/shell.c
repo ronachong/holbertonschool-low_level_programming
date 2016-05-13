@@ -5,6 +5,10 @@ int shell(int ac, char **av, char **env)
 {
   char **argv;
   pid_t pid;
+  pid_t *status;
+
+  ac = ac;
+  av = av;
 
   print_prompt();
   argv = get_argv();
@@ -15,17 +19,19 @@ int shell(int ac, char **av, char **env)
     return 0;
   }
   if (pid == 0) {
-    execve(argv[0], argv, env);
-    /* potentially pass values to parent? */;
-    /* exit */;
+    execve("/usr/bin/ssh-add", ["usr/bin/ssh-add", "foo"], env); /* later: execve(argv[0], argv, env); */
+    /* potentially pass values to parent? */
+    return 1 /* exit */;
   }
   else {
-    wait(addr_to_store_to);
-    /* recursive call to bring prompt back to ready? */;
-    /* handle ctrl + D to end shell; later on maybe accept a cmd to quit */;
+    wait(status);
+    printf("My child has finished\n");
+    /* recursive call to bring prompt back to ready? */
+    /* handle ctrl + D to end shell; later on maybe accept a cmd to quit */
   }
 
   /* free everything: including, argv pointer and strings inside */
+  free_argv();
 
   /* return any values for success? or error? */
 }
