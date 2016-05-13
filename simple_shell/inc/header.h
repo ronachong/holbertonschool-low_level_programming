@@ -12,3 +12,4 @@ int shell (void);
 int print_prompt(void);
 char **get_argv(void);
 char *read_line(const int fd);
+int free_argv(char **argv);
