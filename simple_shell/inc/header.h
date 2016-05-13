@@ -5,11 +5,12 @@
 #include <unistd.h> /* write, fork, execve */
 #include <stdio.h> /* perror */
 #include <stdlib.h> /* malloc, free */
-#include "libshell.h"
+#include <sys/types.h> /* wait */
+#include <sys/wait.h> /* wait */
+#include "libshell.h" /* read_line, split_string */
 
 /* prototypes */
-int shell (void);
+int shell (int ac, char **av, char **env);
 int print_prompt(void);
 char **get_argv(void);
-char *read_line(const int fd);
 int free_argv(char **argv);
