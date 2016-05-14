@@ -5,7 +5,7 @@ DEPS := inc/header.h inc/libshell.h
 
 LIB := libshell.a
 LIBRARIES := $(patsubst %, lib/%, $(LIB))
-OBJ := main.o shell.o print_prompt.o get_argv.o free_argv.o builtins.o string_comparison.o string_length.o print_string.o
+OBJ := main.o shell.o print_prompt.o get_argv.o free_argv.o builtins.o string_comparison.o string_length.o print_string.o create_subshell.o
 OBJECTS := $(patsubst %, obj/%, $(OBJ))
 EXE := simple_shell
 

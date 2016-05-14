@@ -19,4 +19,5 @@ int string_length(char *s);
 int print_env(char **env);
 void print_string(char *s);
 int exit_shell(int *r_mem);
+int create_subshell(char **argv, char ** env);
 int free_argv(char **argv);
