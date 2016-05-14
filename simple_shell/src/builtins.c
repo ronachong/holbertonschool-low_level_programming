@@ -18,7 +18,8 @@ int builtins(char **argv, char **env)
 int print_env(char **env) {
   int i;
   for (i = 0; env[i] != NULL; i++) {
-    printf("%s\n", env[i]);
+    print_string(env[i]);
+    print_string("\n");
   }
 
   return 0 /* for success */;

@@ -17,5 +17,6 @@ int builtins(char **argv, char **env);
 int string_comparison(char *s1, char *s2);
 int string_length(char *s);
 int print_env(char **env);
+void print_string(char *s);
 int exit_shell(void);
 int free_argv(char **argv);
