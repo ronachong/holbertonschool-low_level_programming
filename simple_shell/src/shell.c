@@ -18,7 +18,7 @@ int shell(int ac, char **av, char **env)
       /* if no builtins were invoked */
       if (builtins(argv, env, &running) == 0) {
 	paths = get_paths(env[8]); /* will index vary by OS..? */
-	paths = paths;
+	get_fp(argv[0], paths);
 	create_subshell(argv, env);
       }
 

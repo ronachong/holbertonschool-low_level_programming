@@ -7,6 +7,8 @@
 #include <stdlib.h> /* malloc, free */
 #include <sys/types.h> /* wait */
 #include <sys/wait.h> /* wait */
+#include <sys/types.h> /* opendir */
+#include <dirent.h> /* opendir, readdir */
 #include "libshell.h" /* read_line, split_string */
 
 /* prototypes */
@@ -20,5 +22,6 @@ int string_length(char *s);
 int print_env(char **env);
 void print_string(char *s);
 int exit_shell(int *r_mem);
+char *get_fp(char *argv0, char **paths);
 int create_subshell(char **argv, char **env);
 int free_argv(char **argv);
