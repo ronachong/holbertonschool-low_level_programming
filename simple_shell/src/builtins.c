@@ -8,11 +8,15 @@
 int builtins(char **argv, char **env)
 {
 
-  if (string_comparison(argv[0], "env") == 1)
+  if (string_comparison(argv[0], "env") == 1) {
     print_env(env);
-  else if (string_comparison(argv[0], "exit") == 1)
+    return 1;
+  }
+  else if (string_comparison(argv[0], "exit") == 1) {
     exit_shell();
-  return 1;
+    return 1;
+  }
+  return 0;
 }
 
 int print_env(char **env) {
