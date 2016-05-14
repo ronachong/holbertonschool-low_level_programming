@@ -13,6 +13,7 @@ int shell(int ac, char **av, char **env)
 
   print_prompt();
   argv = get_argv();
+  builtins(argv, env);
 
   pid = fork();
   if (pid == -1) {
