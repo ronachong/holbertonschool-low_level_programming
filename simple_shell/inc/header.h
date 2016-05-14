@@ -13,11 +13,12 @@
 int shell (int ac, char **av, char **env);
 int print_prompt(void);
 char **get_argv(void);
+char **get_paths(char *path_string);
 int builtins(char **argv, char **env, int *r_mem);
 int string_comparison(char *s1, char *s2);
 int string_length(char *s);
 int print_env(char **env);
 void print_string(char *s);
 int exit_shell(int *r_mem);
-int create_subshell(char **argv, char ** env);
+int create_subshell(char **argv, char **env);
 int free_argv(char **argv);
