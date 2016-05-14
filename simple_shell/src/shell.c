@@ -13,23 +13,26 @@ int shell(int ac, char **av, char **env)
 
   print_prompt();
   argv = get_argv();
-  builtins(argv, env);
 
-  pid = fork();
-  if (pid == -1) {
-    perror("fork()");
-    return 0;
-  }
-  if (pid == 0) {
-    execve(argv[0], argv, env); /* later: execve(argv[0], argv, env); */
-    /* potentially pass values to parent? */
-    return 1 /* exit */;
-  }
-  else {
-    wait(status);
-    printf("My child has finished\n");
+  /* if no builtins were invoked */
+  if (builtins(argv, env) == 0) {
+    /* create subshell to run cmd */
+    pid = fork();
+    if (pid == -1) {
+      perror("fork()");
+      return 0;
+    }
+    if (pid == 0) {
+      execve(argv[0], argv, env); /* later: execve(argv[0], argv, env); */
+      /* potentially pass values to parent? */
+      return 1 /* exit */;
+    }
+    else {
+      wait(status);
+      printf("My child has finished\n");
     /* recursive call to bring prompt back to ready? */
     /* handle ctrl + D to end shell; later on maybe accept a cmd to quit */
+    }
   }
 
   /* free everything: including, argv pointer and strings inside */
