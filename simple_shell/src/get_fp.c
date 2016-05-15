@@ -18,11 +18,8 @@ char *get_fp(char *argv0, char **paths) {
   for (i = 0; paths[i] != NULL; i++) {
     printf("Iteration at %s\n", paths[i]);
     dir_p = opendir(paths[i]);
-    dir_ent_p = readdir(dir_p);
-    while (dir_ent_p != NULL) {
-      dir_ent_p = readdir(dir_p);
-      if (dir_ent_p != NULL)
-	printf("%s\n", dir_ent_p->d_name);
+    while ((dir_ent_p = readdir(dir_p)) != NULL) {
+      printf("%s\n", dir_ent_p->d_name);
     }
   }
   return dir_ent_p->d_name;
