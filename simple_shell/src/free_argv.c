@@ -5,13 +5,13 @@
  * then frees argv, the pointer to those strings, itself
  */
 
-int free_argv(char **argv)
+int free_2Darr(char **arr)
 {
   int i;
-  for (i = 0; argv[i] != NULL; i++) {
-    free(argv[i]);
+  for (i = 0; arr[i] != NULL; i++) {
+    free(arr[i]);
   }
 
-  free(argv);
+  free(arr);
   return 1;
 }

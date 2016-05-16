@@ -18,7 +18,7 @@ int shell(int ac, char **av, char **env)
 
       /* if no builtins were invoked */
       if (builtins(argv, env, &running) == 0) {
-	paths_array = get_paths(env); /* will index vary by OS..? */
+	paths_array = get_patharr(env);
 	abs_path = get_fp(argv[0], paths_array);
 	if (abs_path == NULL) {
 	  print_string(argv[0]);
@@ -31,7 +31,8 @@ int shell(int ac, char **av, char **env)
       }
 
       /* free everything: including, argv pointer and strings inside */
-      free_argv(argv);
+      free_2Darr(argv);
+      free_2Darr(paths_array);
     }
   return 1;
 

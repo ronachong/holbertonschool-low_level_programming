@@ -5,17 +5,36 @@
  * strings.
  */
 
-char **get_paths(char **env)
-{
-  return split_pvar(pvar);
+char** get_patharr(char **env) {
+  char *path_str;
+
+  if ((path_str = page_pathstr(env)) == NULL) {
+    printf("No PATH var was found in env./n");
+    return NULL
+  }
+  
+  /* else */
+  return split_pathstr(path_str, ':');
 }
 
-char **split_pvar(char *pvar) {
-  char **split_string;
-  char *path1;
+/*
+ * get_pathstr obtains the string after "PATH=" in env.
+ * if no PATH var is found in env, it returns null.
+ */
 
-  split_string = string_split(path_string, ':');
-  path1 = string_split(split_string[0], '=')[1];  
-  split_string[0] = path1;
-  return split_string;
+char *get_pathstr(char **env)
+{
+  int i;
+  char **spl_str;
+  for (i = 0; env[i] != NULL, i++) {
+    spl_str = string_split(env[i], '=');
+    if (string_comparison(spl_str[0], "PATH") == 1) {
+      return spl_str[1];
+    }
+    /* else */
+    free_2Darr(spl_str);
+  }
+
+  /* if loop completes, i.e. no PATH var is found */
+  return NULL;
 }
