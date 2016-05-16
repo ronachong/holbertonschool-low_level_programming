@@ -12,8 +12,11 @@ char *get_fp(char *argv0, char **paths) {
   char* tmp;
   char *abs_path;
   
+  
+  printf("Running get_fp.\n");
   for (i = 0; paths[i] != NULL; i++) {
     dir_p = opendir(paths[i]);
+    printf("Running while loop, loop #%i\n", i);
     while ((dir_ent_p = readdir(dir_p)) != NULL) {
       if (string_comparison(argv0, dir_ent_p->d_name) == 1) {
 	tmp = concat_string(paths[i], "/");
