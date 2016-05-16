@@ -26,8 +26,8 @@ int shell(int ac, char **av, char **env)
 	} else {
 	  free(argv[0]);
 	  argv[0] = abs_path;
+	  create_subshell(argv, env);
 	}
-	create_subshell(argv, env);
       }
 
       /* free everything: including, argv pointer and strings inside */
