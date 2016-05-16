@@ -9,18 +9,20 @@ char *get_fp(char *argv0, char **paths) {
   int i;
   DIR *dir_p;
   struct dirent *dir_ent_p;
+  char* tmp;
+  char *abs_path;
   
-  printf("This is a test.\n");
-
-  argv0 = argv0;
-  paths = paths;
-
   for (i = 0; paths[i] != NULL; i++) {
-    printf("Iteration at %s\n", paths[i]);
     dir_p = opendir(paths[i]);
     while ((dir_ent_p = readdir(dir_p)) != NULL) {
-      printf("%s\n", dir_ent_p->d_name);
+      if (string_comparison(argv0, dir_ent_p->d_name) == 1) {
+	tmp = concat_string(paths[i], "/");
+	abs_path = concat_string(tmp, argv0);
+	free(tmp);
+	return abs_path;
+      }
     }
   }
-  return dir_ent_p->d_name;
+
+  return NULL;
 }
