@@ -15,7 +15,7 @@ char *get_fp(char *argv0, char **paths) {
   for (i = 0; paths[i] != NULL; i++) {
     dir_p = opendir(paths[i]);
     if (dir_p == NULL) {
-      printf("the directory is %s\n", paths[i]);
+      print_string(paths[i]);
       perror("opendir(paths[i])");
     }
 
