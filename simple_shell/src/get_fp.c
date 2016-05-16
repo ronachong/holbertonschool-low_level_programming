@@ -26,13 +26,9 @@ char *get_fp(char *argv0, char **paths) {
       perror("opendir(paths[i])");
     }
 
-    printf("Running while loop, loop #%i\n", i);
-    printf("dir_p is %p\n", (void *)dir_p);
     while ((dir_ent_p = readdir(dir_p)) != NULL) {
       if (string_comparison(argv0, dir_ent_p->d_name) == 1) {
-	printf("Found %s in %s\n", argv0, paths[i]);
 	tmp = concat_string(paths[i], "/");
-	printf("About to concatenate %s and %s\n", tmp, argv0);
 	abs_path = concat_string(tmp, argv0);
 	free(tmp);
 	return abs_path;
