@@ -5,8 +5,12 @@
  * strings.
  */
 
-char **get_paths(char *path_string)
+char **get_paths(char **env)
 {
+  return split_pvar(pvar);
+}
+
+char **split_pvar(char *pvar) {
   char **split_string;
   char *path1;
 

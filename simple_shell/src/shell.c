@@ -18,15 +18,15 @@ int shell(int ac, char **av, char **env)
 
       /* if no builtins were invoked */
       if (builtins(argv, env, &running) == 0) {
-	paths = get_paths(env[8]); /* will index vary by OS..? */
-	abs_path = get_fp(argv[0], paths);
+	paths_array = get_paths(env); /* will index vary by OS..? */
+	abs_path = get_fp(argv[0], paths_array);
 	if (abs_path == NULL) {
 	  print_string(argv[0]);
 	  print_string(": command not found\n");
 	} else {
 	  free(argv[0]);
 	  argv[0] = abs_path;
-	}
+	}e
 	create_subshell(argv, env);
       }
 
