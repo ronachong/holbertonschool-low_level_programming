@@ -9,7 +9,7 @@ char** get_patharr(char **env) {
   char *path_str;
 
   if ((path_str = get_pathstr(env)) == NULL) {
-    printf("No PATH var was found in env./n");
+    printf("error: No PATH var was found in env./n");
     return NULL;
   }
   
