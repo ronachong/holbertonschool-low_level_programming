@@ -27,6 +27,5 @@ char *concat_string(char *s1, char*s2)
     str[i] = s2[j];
   }
 
-  printf("Concatenated %s and %s into %s.\n", s1, s2, str);
   return str;
 }
