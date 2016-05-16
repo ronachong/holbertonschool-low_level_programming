@@ -30,6 +30,7 @@ char *get_fp(char *argv0, char **paths) {
     printf("dir_p is %p\n", (void *)dir_p);
     while ((dir_ent_p = readdir(dir_p)) != NULL) {
       if (string_comparison(argv0, dir_ent_p->d_name) == 1) {
+	printf("Found %s in %s\n", argv0, paths[i]);
 	tmp = concat_string(paths[i], "/");
 	abs_path = concat_string(tmp, argv0);
 	free(tmp);
