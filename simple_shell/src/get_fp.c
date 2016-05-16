@@ -32,6 +32,7 @@ char *get_fp(char *argv0, char **paths) {
       if (string_comparison(argv0, dir_ent_p->d_name) == 1) {
 	printf("Found %s in %s\n", argv0, paths[i]);
 	tmp = concat_string(paths[i], "/");
+	printf("About to concatenate %s and %s\n", tmp, argv0);
 	abs_path = concat_string(tmp, argv0);
 	free(tmp);
 	return abs_path;
