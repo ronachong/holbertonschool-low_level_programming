@@ -12,13 +12,6 @@ char *get_fp(char *argv0, char **paths) {
   char* tmp;
   char *abs_path;
   
-  
-  printf("Running get_fp.\n");
-  printf("paths contains:\n");
-  for (i = 0; paths[i] != NULL; i++) {
-    printf("%s\n", paths[i]);
-  }
-
   for (i = 0; paths[i] != NULL; i++) {
     dir_p = opendir(paths[i]);
     if (dir_p == NULL) {
