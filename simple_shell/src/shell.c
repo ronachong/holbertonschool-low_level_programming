@@ -5,7 +5,7 @@ int shell(int ac, char **av, char **env)
 {
   int running;
   char **argv;
-  char **paths;
+  char **paths_array;
   char* abs_path;
 
   ac = ac;
@@ -26,7 +26,7 @@ int shell(int ac, char **av, char **env)
 	} else {
 	  free(argv[0]);
 	  argv[0] = abs_path;
-	}e
+	}
 	create_subshell(argv, env);
       }
 

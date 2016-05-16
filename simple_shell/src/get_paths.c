@@ -8,13 +8,13 @@
 char** get_patharr(char **env) {
   char *path_str;
 
-  if ((path_str = page_pathstr(env)) == NULL) {
+  if ((path_str = get_pathstr(env)) == NULL) {
     printf("No PATH var was found in env./n");
-    return NULL
+    return NULL;
   }
   
   /* else */
-  return split_pathstr(path_str, ':');
+  return string_split(path_str, ':');
 }
 
 /*
@@ -26,7 +26,7 @@ char *get_pathstr(char **env)
 {
   int i;
   char **spl_str;
-  for (i = 0; env[i] != NULL, i++) {
+  for (i = 0; env[i] != NULL; i++) {
     spl_str = string_split(env[i], '=');
     if (string_comparison(spl_str[0], "PATH") == 1) {
       return spl_str[1];
