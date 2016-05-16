@@ -28,11 +28,12 @@ int shell(int ac, char **av, char **env)
 	  argv[0] = abs_path;
 	  create_subshell(argv, env);
 	}
+	/* free paths_array after executing command */
+	free_2Darr(paths_array);
       }
 
       /* free everything: including, argv pointer and strings inside */
       free_2Darr(argv);
-      free_2Darr(paths_array);
     }
   return 1;
 
