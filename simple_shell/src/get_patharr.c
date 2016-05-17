@@ -7,6 +7,7 @@
 
 char** get_patharr(char **env) {
   char *path_str;
+  char **path_arr;
 
   if ((path_str = get_pathstr(env)) == NULL) {
     print_string("error: No PATH var was found in env./n");
@@ -14,7 +15,9 @@ char** get_patharr(char **env) {
   }
   
   /* else */
-  return string_split(path_str, ':');
+  path_arr = string_split(path_str, ':');
+  free(path_str);
+  return path_arr;
 }
 
 /*
@@ -26,10 +29,15 @@ char *get_pathstr(char **env)
 {
   int i;
   char **spl_str;
+  char *path_str;
+
   for (i = 0; env[i] != NULL; i++) {
     spl_str = string_split(env[i], '=');
     if (string_comparison(spl_str[0], "PATH") == 1) {
-      return spl_str[1];
+      path_str = spl_str[1];
+      free(spl_str[0]);
+      free(spl_str);
+      return path_str;
     }
     /* else */
     free_2Darr(spl_str);

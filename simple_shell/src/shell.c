@@ -14,11 +14,11 @@ int shell(int ac, char **av, char **env)
 
   while (running) {
       print_prompt();
-      argv = get_argv();
+      argv = get_argv(); /* malloc happens for argv, freed at end */
 
       /* if no builtins were invoked */
       if (builtins(argv, env, &running) == 0) {
-	paths_array = get_patharr(env);
+	paths_array = get_patharr(env); /* malloc happens for paths_array, freed at end */
 	abs_path = get_fp(argv[0], paths_array);
 	if (abs_path == NULL) {
 	  print_string(argv[0]);
