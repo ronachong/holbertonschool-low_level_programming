@@ -5,7 +5,7 @@
  * appropriate function if a command for a builtin is passed.
  */
 
-int builtins(char **argv, char **env, int *r_mem)
+int builtins(char **argv, char **env, int *r_mem, int *ret_ptr)
 {
 
   if (string_comparison(argv[0], "env") == 1) {
@@ -14,8 +14,15 @@ int builtins(char **argv, char **env, int *r_mem)
   }
   else if (string_comparison(argv[0], "exit") == 1) {
     exit_shell(r_mem);
+    if (argv[1] == NULL) {
+      set_return(ret_ptr, 0);
+    } else {
+      set_return(ret_ptr, atoi(argv[1]));
+    }
     return 1;
   }
+
+  /* if no builtins succeeded */
   return 0;
 }
 
@@ -30,7 +37,11 @@ int print_env(char **env) {
 }
 
 int exit_shell(int *r_mem) {
-  printf("This will have to return different vals to main later.\n");
   *r_mem = 0;
+  return 1;
+}
+
+int set_return(int *ret_ptr, int argv1) {
+  *ret_ptr = argv1;
   return 1;
 }

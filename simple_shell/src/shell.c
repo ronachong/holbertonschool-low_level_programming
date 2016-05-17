@@ -4,20 +4,23 @@
 int shell(int ac, char **av, char **env)
 {
   int running;
+  int ret_val;
   char **argv;
   char **paths_array;
-  char* abs_path;
+  char *abs_path;
 
   ac = ac;
   av = av;
   running = 1;
+  ret_val = 0;
+  
 
   while (running) {
       print_prompt();
       argv = get_argv();
 
       /* if no builtins were invoked */
-      if (builtins(argv, env, &running) == 0) {
+      if (builtins(argv, env, &running, &ret_val) == 0) {
 	paths_array = get_patharr(env);
 	abs_path = get_fp(argv[0], paths_array);
 	if (abs_path == NULL) {
@@ -36,7 +39,7 @@ int shell(int ac, char **av, char **env)
       /* free argv pointer and strings inside */
       free_2Darr(argv);
     }
-  return 1;
+  return ret_val;
 
   /* return any values for success? or error? */
 }

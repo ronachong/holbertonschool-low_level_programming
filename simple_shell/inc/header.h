@@ -4,7 +4,7 @@
 /* includes */
 #include <unistd.h> /* write, fork, execve */
 #include <stdio.h> /* perror */
-#include <stdlib.h> /* malloc, free */
+#include <stdlib.h> /* malloc, free, atoi */
 #include <sys/types.h> /* wait, closedir, opendir */
 #include <sys/wait.h> /* wait */
 #include <dirent.h> /* opendir, closedir, readdir */
@@ -16,7 +16,8 @@ int print_prompt(void);
 char **get_argv(void);
 char **get_patharr(char **env);
 char *get_pathstr(char **env);
-int builtins(char **argv, char **env, int *r_mem);
+int builtins(char **argv, char **env, int *r_mem, int *ret_ptr);
+int set_return(int *ret_ptr, int argv1);
 int string_comparison(char *s1, char *s2);
 int string_length(char *s);
 int print_env(char **env);

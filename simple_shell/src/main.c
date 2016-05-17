@@ -3,9 +3,5 @@
 
 int main(int ac, char **av, char **env)
 {
-  if (shell(ac, av, env) == 1)
-    return 0;
-
-  /* else */
-  return 1;
+  return (shell(ac, av, env));
 }
