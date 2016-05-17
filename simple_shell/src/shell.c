@@ -14,12 +14,12 @@ int shell(int ac, char **av, char **env)
 
   while (running) {
       print_prompt();
-      argv = get_argv(); /* malloc happens for argv, freed at end */
+      argv = get_argv();
 
       /* if no builtins were invoked */
       if (builtins(argv, env, &running) == 0) {
-	paths_array = get_patharr(env); /* malloc happens for paths_array, freed at end */
-	abs_path = get_fp(argv[0], paths_array); /* malloc happens for abs_path, which is freed as part of argv @ end */
+	paths_array = get_patharr(env);
+	abs_path = get_fp(argv[0], paths_array);
 	if (abs_path == NULL) {
 	  print_string(argv[0]);
 	  print_string(": command not found\n");
@@ -33,7 +33,7 @@ int shell(int ac, char **av, char **env)
 	free_2Darr(paths_array);
       }
 
-      /* free everything: including, argv pointer and strings inside */
+      /* free argv pointer and strings inside */
       free_2Darr(argv);
     }
   return 1;
