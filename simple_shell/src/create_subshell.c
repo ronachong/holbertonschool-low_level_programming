@@ -24,7 +24,7 @@ int create_subshell(char **argv, char **env)
   }
   else {
     wait(&status);
-    printf("My child has finished\n");
+    printf("Child process has finished\n");
   }
 
   return 1;

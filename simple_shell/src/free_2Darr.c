@@ -10,6 +10,7 @@ int free_2Darr(char **arr)
   int i;
   for (i = 0; arr[i] != NULL; i++) {
     printf("the pointer being freed is %p, containing the string %s\n", (void *)(arr + i), arr[i]);
+    free(arr[i]);
     arr[i] = NULL;
   }
 

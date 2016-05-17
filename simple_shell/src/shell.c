@@ -19,11 +19,12 @@ int shell(int ac, char **av, char **env)
       /* if no builtins were invoked */
       if (builtins(argv, env, &running) == 0) {
 	paths_array = get_patharr(env); /* malloc happens for paths_array, freed at end */
-	abs_path = get_fp(argv[0], paths_array);
+	abs_path = get_fp(argv[0], paths_array); /* malloc happens for abs_path, which is freed as part of argv @ end */
 	if (abs_path == NULL) {
 	  print_string(argv[0]);
 	  print_string(": command not found\n");
 	} else {
+	  printf("freeing %s\n", argv[0]);
 	  free(argv[0]);
 	  argv[0] = abs_path;
 	  create_subshell(argv, env);
