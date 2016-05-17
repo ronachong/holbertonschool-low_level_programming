@@ -24,9 +24,11 @@ char *get_fp(char *argv0, char **paths) {
 	tmp = concat_string(paths[i], "/");
 	abs_path = concat_string(tmp, argv0);
 	free(tmp);
+	closedir(dir_p);
 	return abs_path;
       }
     }
+    closedir(dir_p);
   }
 
   return NULL;

@@ -5,10 +5,9 @@
 #include <unistd.h> /* write, fork, execve */
 #include <stdio.h> /* perror */
 #include <stdlib.h> /* malloc, free */
-#include <sys/types.h> /* wait */
+#include <sys/types.h> /* wait, closedir, opendir */
 #include <sys/wait.h> /* wait */
-#include <sys/types.h> /* opendir */
-#include <dirent.h> /* opendir, readdir */
+#include <dirent.h> /* opendir, closedir, readdir */
 #include "libshell.h" /* read_line, split_string */
 
 /* prototypes */
