@@ -12,7 +12,6 @@
 
 /* prototypes */
 int shell (int ac, char **av, char **env);
-int add_retvar(char **env);
 int print_prompt(void);
 char **get_argv(void);
 char **get_patharr(char **env);

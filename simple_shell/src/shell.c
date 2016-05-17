@@ -16,8 +16,6 @@ int shell(int ac, char **av, char **env)
   status = 1;
   ret_val = 0;
 
-  add_retvar(env);  
-
   while (running) {
       print_prompt();
       argv = get_argv();
