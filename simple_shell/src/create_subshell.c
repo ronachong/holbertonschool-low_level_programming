@@ -4,12 +4,9 @@
  * create_subshell creates a new shell by forking the process of a parent shell
  */
 
-int create_subshell(char **argv, char **env)
+int create_subshell(char **argv, char **env, int *status_ptr)
 {
   pid_t pid;
-  int status;
-
-  status = 0;
 
   pid = fork();
   if (pid == -1) {
@@ -22,7 +19,7 @@ int create_subshell(char **argv, char **env)
     return 1 /* exit */;
   }
   else {
-    wait(&status);
+    wait(status_ptr);
   }
 
   return 1;

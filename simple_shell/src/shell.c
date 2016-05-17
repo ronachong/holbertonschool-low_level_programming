@@ -4,6 +4,7 @@
 int shell(int ac, char **av, char **env)
 {
   int running;
+  int status;
   int ret_val;
   char **argv;
   char **paths_array;
@@ -12,6 +13,7 @@ int shell(int ac, char **av, char **env)
   ac = ac;
   av = av;
   running = 1;
+  status = 1;
   ret_val = 0;
 
   add_retvar(env);  
@@ -30,8 +32,10 @@ int shell(int ac, char **av, char **env)
 	} else {
 	  free(argv[0]);
 	  argv[0] = abs_path;
-	  create_subshell(argv, env);
+	  create_subshell(argv, env, &status);
 	}
+	printf("the 'status' of the last executed process is %i\n", status);
+
 	/* free paths_array after executing command */
 	free_2Darr(paths_array);
       }

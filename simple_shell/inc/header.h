@@ -26,5 +26,5 @@ void print_string(char *s);
 int exit_shell(int *r_mem);
 char *get_fp(char *argv0, char **paths);
 char *concat_string(char *s1, char* s2);
-int create_subshell(char **argv, char **env);
+int create_subshell(char **argv, char **env, int *status_ptr);
 int free_2Darr(char **arr);
