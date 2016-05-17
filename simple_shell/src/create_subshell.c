@@ -17,14 +17,12 @@ int create_subshell(char **argv, char **env)
     return 0;
   }
   if (pid == 0) {
-    printf("About to execute %s\n", argv[0]);
     execve(argv[0], argv, env);
     /* potentially handle error from execve? */
     return 1 /* exit */;
   }
   else {
     wait(&status);
-    printf("Child process has finished\n");
   }
 
   return 1;

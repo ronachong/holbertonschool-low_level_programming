@@ -13,7 +13,8 @@ int shell(int ac, char **av, char **env)
   av = av;
   running = 1;
   ret_val = 0;
-  
+
+  add_retvar(env);  
 
   while (running) {
       print_prompt();
@@ -27,7 +28,6 @@ int shell(int ac, char **av, char **env)
 	  print_string(argv[0]);
 	  print_string(": command not found\n");
 	} else {
-	  printf("freeing %s\n", argv[0]);
 	  free(argv[0]);
 	  argv[0] = abs_path;
 	  create_subshell(argv, env);
