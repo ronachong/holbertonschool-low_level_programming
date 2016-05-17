@@ -22,7 +22,7 @@ int builtins(char **argv, char **env, int *r_mem, int *ret_ptr)
     return 1;
   }
 
-  /* if no builtins succeeded */
+  /* if no builtins were invoked */
   return 0;
 }
 
