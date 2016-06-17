@@ -5,7 +5,7 @@ DEPS := inc/header.h
 
 LIB := 
 LIBRARIES := $(patsubst %, lib/%, $(LIB))
-OBJ := main.o
+OBJ := main.o str_to_int.o find_length.o print_string.o print_char.o
 OBJECTS := $(patsubst %, obj/%, $(OBJ))
 EXE := cross
 
