@@ -17,7 +17,7 @@ void print_first_half(int n_rows)
   n_rows = n_rows/2;
 
   /* for each row */
-  for (i = 0; i < nh_rows; i++) {
+  for (i = 0; i < n_rows; i++) {
     printf("spc_out: %d;", spc_out*2);
     printf("spc_btw: %d ", spc_btw);
     for (l = 0; l < spc_out; l++) {
