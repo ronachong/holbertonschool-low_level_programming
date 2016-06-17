@@ -7,7 +7,7 @@ int main(int ac, char **av)
     return (1)
     }
 
-  n_rows = char_to_int(av[1])
+  n_rows = str_to_int(av[1])
   /* print first half of cross */
   if (n_rows % 2 == 1) {
     print_char('X');
