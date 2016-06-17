@@ -2,8 +2,10 @@
 
 int main(int ac, char **av)
 {
+  int i;
   int n_rows;
   int spc_btw;
+  int spc_out;
 
   /* handle improper number of args */
   if (ac != 2) {
@@ -22,13 +24,19 @@ the program.\n");
     }
 
   /* print first half of cross */
-  print_first_half(n_rows);
+  spc_out = print_first_half(n_rows);
 
   /* handle cases of odd n_rows */
   if (n_rows % 2 == 1) {
+    for (i = 0; i < spc_out; i++) {
+      print_char(' ');
+    }
     print_char('X');
-    print_char('\n');
     spc_btw = 1;
+    for (i = 0; i < spc_out; i++) {
+      print_char(' ');
+    }
+    print_char('\n');
   }
 
   /* print second half of cross*/
