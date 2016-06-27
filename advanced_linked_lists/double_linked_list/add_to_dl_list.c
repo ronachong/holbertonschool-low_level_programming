@@ -16,9 +16,11 @@ int add_end_dl_list(List **list, char *str) {
   /* steps : */
   /* create space for node, as in: */
   /* malloc space for the node as a whole? */
-  
-  /* malloc space for the str in the node?  */
+  node_ptr = malloc(sizeof(List));
+  /* malloc space for the str in the node? not sure if strdup already does this */
+  node_str = malloc(sizeof(char)*str_length);
   /* malloc space for the prev pointer in the node? */
+  next_ptr = malloc(sizeof(List))
   /* malloc space for the next pointer in the node? */
 
   /* assign values for node, as in */
