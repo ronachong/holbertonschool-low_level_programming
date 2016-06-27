@@ -9,9 +9,6 @@
 
 int add_end_dl_list(List **list, char *str) {
   List *node_ptr;
-  char *node_str;
-  List *next_ptr;
-  List *prev_ptr;
   
   /* malloc space for node, including elements housed by node (ptr values) */
   node_ptr = malloc(sizeof(List));
@@ -20,11 +17,15 @@ int add_end_dl_list(List **list, char *str) {
     return 1;
   }
 
- 
-  /* assign values for node, as in */
-  /* use strdup to copy str, and make node str equal to copy */
-  
-  /* make prev pointer equal to pointer to last item in list */
-  /* make next pointer equal to NULL? */
+  /* assign values for node, as in: */
+  /* set node str to a copy of the string using strdup */
+  node_ptr->str = strdup(str);
+  if (node_ptr->str == NULL) {
+    return 1;
+  }
+  /* make prev pointer equal to pointer to last node in list */
+  node_ptr->prev = get_tail(list);
+  /* make next pointer equal to NULL */
+  node_ptr->next = NULL;
 }
   
