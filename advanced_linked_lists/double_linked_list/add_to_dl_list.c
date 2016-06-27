@@ -20,8 +20,9 @@ int add_end_dl_list(List **list, char *str) {
   /* malloc space for the str in the node? not sure if strdup already does this */
   node_str = malloc(sizeof(char)*str_length);
   /* malloc space for the prev pointer in the node? */
-  next_ptr = malloc(sizeof(List))
+  next_ptr = malloc(sizeof(List));
   /* malloc space for the next pointer in the node? */
+  prev_ptr = malloc(sizeof(List));
 
   /* assign values for node, as in */
   /* use strdup to copy str, and make node str equal to copy */
