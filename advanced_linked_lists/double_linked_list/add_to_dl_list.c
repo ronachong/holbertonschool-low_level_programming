@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+List *get_tail(List **list);
+
 /*
  * add_end_dl_list takes in a pointer to a pointer, list. The address which list
  * points to should be the first item in a linked list, or NULL. add_end_dl_list
