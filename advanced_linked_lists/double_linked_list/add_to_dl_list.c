@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-void print_string(char *str);
 List *get_tail(List **list);
 
 /*
@@ -68,7 +67,39 @@ List *get_tail(List **list) {
  * -assign NULL to the node's prev element
  * -change the value of the next node (i.e. the former first node)'s prev elem-
  * ent to the pointer of the node.
+ * -change the value of list so that it points to new node
  */
 
+int add_begin_dl_list(List **list, char *str) {
+  List *node_ptr;
+  
+  /* allocate the space for new node in the list */
+  node_ptr = malloc(sizeof(List));
+  if (node_ptr == NULL) {
+    return 1;
+  }
 
+  /* assign a malloced copy of str to the node's str element */
+  node_ptr->str = strdup(str);
+  if (node_ptr->str == NULL) {
+    return 1;
+  }
+  
+  /* assign the pointer to the first node to the node's next element */
+  node_ptr->next = *list;
+
+  /* assign NULL to the node's prev element */
+  node_ptr->prev = NULL;
+
+ /* change the value of the next node (i.e. the former first node)'s prev elem-
+    ent to the pointer of the node. */
+  if (node_ptr->next != NULL) {
+    node_ptr->next->prev = node_ptr;
+  }
+
+  /* change the value of list so that it points to new node */
+  *list = node_ptr;
+  
+  return 0;
+}
 
