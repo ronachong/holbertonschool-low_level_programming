@@ -1,4 +1,6 @@
 #include "list.h"
+#include <stdlib.h>
+#include <string.h>
 
 /*
  * add_end_dl_list takes in a pointer to a pointer, list. The address which list
