@@ -27,5 +27,17 @@ int add_end_dl_list(List **list, char *str) {
   node_ptr->prev = get_tail(list);
   /* make next pointer equal to NULL */
   node_ptr->next = NULL;
+  /* make previous node point to this node*/
+  node_ptr->prev->next = node_ptr;
 }
+
+List *get_tail(List **list) {
+  List *node_ptr;
+  node_ptr = *list;
   
+    while (node_ptr->next != NULL) {
+      node_ptr = node_ptr->next;
+    }
+
+    return node_ptr
+}
