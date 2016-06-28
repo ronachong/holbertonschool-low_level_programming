@@ -33,7 +33,7 @@ int add_end_dl_list(List **list, char *str) {
    * to point to node_ptr */
   if (*list == NULL) {
     node_ptr->prev = NULL;
-    list = &node_ptr;
+    *list = node_ptr;
   }
   else {  
   /* make prev pointer equal to pointer to last node in list */
