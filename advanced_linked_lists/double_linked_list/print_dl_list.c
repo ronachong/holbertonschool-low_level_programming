@@ -29,7 +29,7 @@ void print_dl_list(List *list) {
     print_char('\n');
 
     print_char('\t');
-    print_string( (node_ptr->next == NULL) ? "NULL": node_ptr->prev->str);
+    print_string( (node_ptr->next == NULL) ? "NULL": node_ptr->next->str);
     print_char('\n');
 
     node_ptr = node_ptr->next;
