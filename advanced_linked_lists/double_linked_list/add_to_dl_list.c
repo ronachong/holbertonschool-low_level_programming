@@ -41,3 +41,19 @@ List *get_tail(List **list) {
 
     return node_ptr
 }
+
+/*
+ * add_begin_dl_list takes in a pointer to the address of the first item in a
+ * list, list, and a string, str.
+ * add_begin_dl_list adds a new node to the list pointed to by list via the
+ * following steps:
+ * -allocate the space for new node in the list
+ * -assign a malloced copy of str to the node's str element
+ * -assign the pointer to the first node to the node's next element
+ * -assign NULL to the node's prev element
+ * -change the value of the next node (i.e. the former first node)'s prev elem-
+ * ent to the pointer of the node.
+ */
+
+
+
