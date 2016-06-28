@@ -1,7 +1,6 @@
 #include "list.h"
 #include <string.h>
 
-void print_string(char *str);
 int add_end_dl_list(List **list, char *str);
 
 /*
