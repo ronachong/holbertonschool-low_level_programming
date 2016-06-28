@@ -38,11 +38,11 @@ int add_end_dl_list(List **list, char *str) {
   else {  
   /* make prev pointer equal to pointer to last node in list */
     node_ptr->prev = get_tail(list);
+  /* make previous node point to this node*/
+    node_ptr->prev->next = node_ptr;
   }
   /* make next pointer equal to NULL */
   node_ptr->next = NULL;
-  /* make previous node point to this node*/
-  node_ptr->prev->next = node_ptr;
   return 0;
 }
 
