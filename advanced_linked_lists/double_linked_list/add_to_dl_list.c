@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+void print_string(char *str);
 List *get_tail(List **list);
 
 /*
@@ -28,10 +29,13 @@ int add_end_dl_list(List **list, char *str) {
     return 1;
   }
 
-  /* if list is empty, make node's prev. element NULL */
+  /* if list is empty, make node's prev. element NULL, and reassign list
+   * to point to node_ptr */
   if (*list == NULL) {
     node_ptr->prev = NULL;
-  } else {  
+    list = &node_ptr;
+  }
+  else {  
   /* make prev pointer equal to pointer to last node in list */
     node_ptr->prev = get_tail(list);
   }
