@@ -39,6 +39,7 @@ int add_end_dl_list(List **list, char *str) {
   node_ptr->next = NULL;
   /* make previous node point to this node*/
   node_ptr->prev->next = node_ptr;
+  return 0;
 }
 
 List *get_tail(List **list) {
@@ -49,7 +50,7 @@ List *get_tail(List **list) {
       node_ptr = node_ptr->next;
     }
 
-    return node_ptr
+    return node_ptr;
 }
 
 /*
