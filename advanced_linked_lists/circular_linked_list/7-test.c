@@ -21,10 +21,10 @@ int main(void)
   printf("The address stored in list is now %p.\n", (void *)list);
 
   printf("The nodes in the list contain the strings:\n");
-  printf("%s\n", list->next->next->next->next->prev->prev->prev->prev->str);
-  printf("%s\n", list->next->next->next->next->prev->prev->prev->str);
-  printf("%s\n", list->next->next->next->next->prev->prev->str);
-  printf("%s\n", list->next->next->next->next->prev->str);
+  printf("%s\n", list->str);
+  printf("%s\n", list->next->str);
+  printf("%s\n", list->next->next->str);
+  printf("%s\n", list->next->next->next->str);
   printf("%s\n", list->next->next->next->next->str);  
 
   free_cl_list(list);
