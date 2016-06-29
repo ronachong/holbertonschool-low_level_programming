@@ -2,13 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-void print_string(char *str);
 List *get_tail(List **list);
 
 /*
- * add_end_dl_list takes in a pointer to a pointer, list. The address which list
+ * add_end_cl_list takes in a pointer to a pointer, list. The address which list
  * points to should be the first item in a circular linked list, or NULL.
- * add_end_dl_list appends a new node to the end of the list with the string
+ * add_end_cl_list appends a new node to the end of the list with the string
  * str as its str element.
  */
 
@@ -25,23 +24,18 @@ int add_end_cl_list(List **list, char *str) {
   if (node_ptr->str == NULL)
     return 1;
 
-  /* if list is empty, make node's prev. element point to self;
-   * reassign list to point to node_ptr */
+  /* if list is empty, reassign list to point to node_ptr */
   if (*list == NULL) {
-    node_ptr->prev = node_ptr;
     *list = node_ptr;
   }
   else {  
-    /* make prev pointer equal to pointer to last node in list */
-    node_ptr->prev = get_tail(list);
-    /* make previous node's next element point to this node*/
-    node_ptr->prev->next = node_ptr;
+    /* make previous node (list's former tail)'s next element point to this
+       node */
+    get_tail(list)->next = node_ptr;
   }
-  /* make next pointer equal to first node in list */
-  node_ptr->next = *list;
 
-  /* make first element's prev element equal to new node */
-  (*list)->prev = node_ptr;
+  /* make next pointer of node equal to first node in list */
+  node_ptr->next = *list;
 
   return 0;
 }
@@ -87,19 +81,9 @@ int add_begin_cl_list(List **list, char *str) {
   /* assign the pointer to the first node to the node's next element */
   node_ptr->next = (*list == NULL) ? node_ptr:*list;
 
-  /* assign the list's last element to the node's prev element */
-  node_ptr->prev = (*list == NULL) ? node_ptr:get_tail(list);
-  print_string("prev of node\n");  
- /* change the value of the previous node (i.e. the tail)'s next elem-
-    ent to the pointer of the node. */
+ /* change the value of the tail)'s next element to the pointer of the node. */
   if (*list != NULL) {
-    node_ptr->prev->next = node_ptr;
-  }
-
- /* change the value of the next node (i.e. the former first node)'s prev elem-
-    ent to the pointer of the node. */
-  if (*list != NULL) {
-    node_ptr->next->prev = node_ptr;
+    get_tail(list)->next = node_ptr;
   }
 
   /* change the value of list so that it points to new node */
