@@ -19,4 +19,6 @@ HashTable *ht_create(unsigned int size)
   ht_ptr->size = size;
   /* assign array to HashTable */
   ht_ptr->array = array;
+
+  return ht_ptr;
 }
