@@ -5,7 +5,7 @@ HashTable *ht_create(unsigned int size);
 int ht_put(HashTable *hashtable, const char *key, const char *value);
 char *ht_get(HashTable *hashtable, const char *key);
 unsigned int hash(const char *key, unsigned int size);
-int ht_free(HashTable *hashtable);
+void ht_free(HashTable *hashtable);
 
 int main(void) {
   HashTable *ht = ht_create(5);
@@ -35,6 +35,5 @@ int print_hashtable(HashTable *ht) {
     }
     printf("\tNULL\n\t--------\n");
   }
-  printf("ht_free finds %d cells\n", ht_free(ht));
   return 0;
 }

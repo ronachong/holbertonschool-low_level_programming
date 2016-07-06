@@ -6,13 +6,28 @@
  * then the Lists, then the size and array elements of the hash table, then
  * hash table struct itself.
  */
-int ht_free(HashTable *hashtable)
+void ht_free(HashTable *hashtable)
 {
   int i;
+  List *n_ptr;
+  List *tmp;
 
   for (i = 0; i < hashtable->size; i++) {
-    /* free node at index */
-    /* move on to next node */
+    n_ptr = hashtable->array[i];
+    while (n_ptr != NULL) {
+      /* free alloced node contents, then each node in list at index */
+      free(n_ptr->key);
+      free(n_ptr->value);
+      tmp = n_ptr->next;
+      free(n_ptr);
+      /* move on to next node */
+      n_ptr = tmp;
     }
-  return i;
+  }
+  /* free size element of hash table */
+  free(hashtable->size);
+  /* free array of hash table */
+  free(hashtable->array);
+  /* free hash table */
+  free(hashtable);
 }
