@@ -1,4 +1,6 @@
 #include "hashtable.h"
+#include <string.h>
+List *find_node_in_ht(HashTable *hashtable, const char *key, int i);
 
 /*
  * ht_get takes in the following parameters:
@@ -17,7 +19,7 @@ char *ht_get(HashTable *hashtable, const char *key)
   /* hash @key to get index, using hash */
   i = hash(key, sizeof(hashtable));
   /* find node in hash table list with @key as key value, using index */
-  n_ptr = find_node_in_ht(hashtable, key);
+  n_ptr = find_node_in_ht(hashtable, key, i);
   if (n_ptr == NULL)
     return NULL;
   /* else: */
