@@ -11,8 +11,8 @@ List *add_as_head(List *l_ptr, const char *key, const char *value);
  * 3) the string @value, which is the value corresponding to @key
  *
  * ht_put hashes @key, creates and adds a linked list node containing @key and
- * @value to the hash table pointed to by @hashtable, and returns an integer
- * representing the index of the key and value pair in the hash table.
+ * @value to the hash table pointed to by @hashtable, and returns 0 upon suc-
+ * cess, 1 upon error.
  */
 
 int ht_put(HashTable *hashtable, const char *key, const char *value)
@@ -32,7 +32,7 @@ int ht_put(HashTable *hashtable, const char *key, const char *value)
   /* add new node to hash table at index */
   hashtable->array[i] = n_ptr;
   /* return index of key and value pair in hash table */
-  return i;
+  return 0;
 }
 
 
