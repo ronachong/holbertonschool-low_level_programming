@@ -1,10 +1,11 @@
 #include "hashtable.h"
+List *add_as_head(List *l_ptr, const char *key, const char *value)
 
 /*
  * ht_put takes in the following three parameters:
  * 1) the pointer @hashtable, pointing to a hash table
  * 2) the string @key, to be hashed
- * 3) the string @value, which is the value corresponding to key
+ * 3) the string @value, which is the value corresponding to @key
  *
  * ht_put hashes @key, creates and adds a linked list node containing @key and
  * @value to the hash table pointed to by @hashtable, and returns an integer
@@ -16,7 +17,6 @@ int ht_put(HashTable *hashtable, const char *key, const char *value)
   int i;
   List *n_ptr;
   
-
   /* hash @key and get index, using hash */
   i = hash(key);
   /* create linked list node with @key and @value */
@@ -25,4 +25,26 @@ int ht_put(HashTable *hashtable, const char *key, const char *value)
   hashtable->array[i] = n_ptr;
   /* return index of key and value pair in hash table */
   return i;
+}
+
+
+/*
+ * add_as_head takes in the following inputs:
+ * 1) the pointer a list in a hash table, @l_ptr
+ * 2) the string @key
+ * 3) the string @value, which is the value corresponding to @key
+ *
+ * add_as_head creates a new List node with a copy of @key as its key element,
+ * a cpopy of @value as its value element, and the former head of the list
+ * pointed to by @l_ptr as its next element.
+ * finally, add_as_head returns the pointer to the new node.
+ */
+List *add_as_head(List *l_ptr, const char *key, const char *value)
+{
+  /* create List node using malloc */
+  /* assign key value using strdup */
+  /* assign value value using strdup */
+  /* assign next value using @l_ptr */
+  /* return pointer to List node */
+  ;
 }
