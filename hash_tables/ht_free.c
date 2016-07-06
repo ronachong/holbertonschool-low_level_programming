@@ -1,4 +1,5 @@
 #include "hashtable.h"
+#include <stdlib.h>
 
 /*
  * ht_free takes in as its parameter the point to a hashtable @hashtable.
