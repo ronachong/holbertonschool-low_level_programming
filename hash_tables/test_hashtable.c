@@ -27,7 +27,9 @@ int print_hashtable(HashTable *ht) {
     listptr = ht->array[i];
     printf("\t--------\n");
     while (listptr != NULL) {
-      printf("\tkey: %s\n\tval: %s\n\t--------\n", listptr->key, ht_get(ht, listptr->key));
+      printf("\tkey: %s\n\tval: %s\n", listptr->key, listptr->value);
+      printf("\tht_get finds: %s\n", ht_get(ht, listptr->key));
+      printf("\t--------\n");
       listptr = listptr->next;
     }
     printf("\tNULL\n\t--------\n");
