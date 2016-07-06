@@ -1,7 +1,7 @@
 #include "hashtable.h"
-#incldue <string.h>
+#include <string.h>
 
-List *add_as_head(List *l_ptr, const char *key, const char *value)
+List *add_as_head(List *l_ptr, const char *key, const char *value);
 
 /*
  * ht_put takes in the following three parameters:
