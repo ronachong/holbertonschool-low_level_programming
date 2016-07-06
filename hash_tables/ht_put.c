@@ -23,6 +23,11 @@ int ht_put(HashTable *hashtable, const char *key, const char *value)
   i = hash(key);
   /* create linked list node with @key and @value */
   n_ptr = add_as_head(hashtable->array[i], key, value);
+  /* if mem alloc failed */
+  if (n_ptr = NULL) {
+    return 1;
+  }
+  /* else: */
   /* add new node to hash table at index */
   hashtable->array[i] = n_ptr;
   /* return index of key and value pair in hash table */
