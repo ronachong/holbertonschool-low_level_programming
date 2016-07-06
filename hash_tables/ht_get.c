@@ -26,3 +26,26 @@ char *ht_get(HashTable *hashtable, const char *key)
 }
 
 
+/*
+ * find_node_in_ht takes in the following parameters:
+ * 1) a pointer to a hash table @hashtable
+ * 2) a string representing a key stored in the hash table, @key
+ * 3) an integer representing the index of the key in the hash table, @i
+ *
+ * find_node_in_ht searches the linked list at the @i in the hashtable
+ * and returns the pointer to the node containing @key as its key element.
+ */
+List *find_node_in_ht(HashTable *hashtable, const char *key, int i)
+{
+  List *n_ptr;
+  n_ptr = hashtable->array[i];
+  /* identify pointer with key as key element */
+  while (n_ptr->key != key) {
+    n_ptr = n_ptr->next;
+    /* return NULL if end of list is reached */
+    if (n_ptr->next == NULL)
+      return NULL;
+  }
+  /* else: */
+  return n_ptr;
+}
