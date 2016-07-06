@@ -47,10 +47,16 @@ List *add_as_head(List *l_ptr, const char *key, const char *value)
 
   /* create List node using malloc */
   n_ptr = malloc(sizeof(List));
+  if (n_ptr == NULL) {
+    return NULL;
+  }
   /* assign key value using strdup */
   n_ptr->key = strdup(key);
   /* assign value value using strdup */
   n_ptr->value = strdup(value);
+  if (n_ptr->key = NULL || n_ptr->value = NULL) {
+    return NULL;
+  }
   /* assign next value using @l_ptr */
   n_ptr->next = l_ptr;
   /* return pointer to List node */
