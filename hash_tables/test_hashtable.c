@@ -3,6 +3,7 @@
 
 HashTable *ht_create(unsigned int size);
 int ht_put(HashTable *hashtable, const char *key, const char *value);
+char *ht_get(HashTable *hashtable, const char *key);
 unsigned int hash(const char *key, unsigned int size);
 
 int main(void) {
@@ -26,7 +27,7 @@ int print_hashtable(HashTable *ht) {
     listptr = ht->array[i];
     printf("\t--------\n");
     while (listptr != NULL) {
-      printf("\tkey: %s\n\tval: %s\n\t--------\n", listptr->key, listptr->value);
+      printf("\tkey: %s\n\tval: %s\n\t--------\n", listptr->key, ht_get(ht, listptr->key));
       listptr = listptr->next;
     }
     printf("\tNULL\n\t--------\n");
