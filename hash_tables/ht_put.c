@@ -1,4 +1,5 @@
 #include "hashtable.h"
+#include <stdlib.h>
 #include <string.h>
 
 List *add_as_head(List *l_ptr, const char *key, const char *value);
@@ -20,11 +21,11 @@ int ht_put(HashTable *hashtable, const char *key, const char *value)
   List *n_ptr;
   
   /* hash @key and get index, using hash */
-  i = hash(key);
+  i = hash(key,  sizeof(hashtable));
   /* create linked list node with @key and @value */
   n_ptr = add_as_head(hashtable->array[i], key, value);
   /* if mem alloc failed */
-  if (n_ptr = NULL) {
+  if (n_ptr == NULL) {
     return 1;
   }
   /* else: */
@@ -48,7 +49,7 @@ int ht_put(HashTable *hashtable, const char *key, const char *value)
  */
 List *add_as_head(List *l_ptr, const char *key, const char *value)
 {
-  n_ptr;
+  List *n_ptr;
 
   /* create List node using malloc */
   n_ptr = malloc(sizeof(List));
@@ -59,7 +60,7 @@ List *add_as_head(List *l_ptr, const char *key, const char *value)
   n_ptr->key = strdup(key);
   /* assign value value using strdup */
   n_ptr->value = strdup(value);
-  if (n_ptr->key = NULL || n_ptr->value = NULL) {
+  if (n_ptr->key == NULL || n_ptr->value == NULL) {
     return NULL;
   }
   /* assign next value using @l_ptr */
