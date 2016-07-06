@@ -1,4 +1,5 @@
 #include "hashtable.h"
+#include <stdlib.h>
 
 /*
  * ht_create takes in the unsigned int "size" for its parameter and returns
