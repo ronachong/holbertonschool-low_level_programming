@@ -17,6 +17,7 @@ int main(void) {
   ht_put(ht, "Six", "Value Six");
   ht_put(ht, "Seven", "Value Seven");
   print_hashtable(ht);
+  ht_free(ht);
 }
 
 int print_hashtable(HashTable *ht) {

@@ -4,8 +4,8 @@
 /*
  * ht_free takes in as its parameter the point to a hashtable @hashtable.
  * ht_free frees all of the strings in each List within the hash table,
- * then the Lists, then the size and array elements of the hash table, then
- * hash table struct itself.
+ * then the Lists, then array element of the hash table, then the hash table
+ * struct itself.
  */
 void ht_free(HashTable *hashtable)
 {
@@ -25,8 +25,6 @@ void ht_free(HashTable *hashtable)
       n_ptr = tmp;
     }
   }
-  /* free size element of hash table */
-  free(hashtable->size);
   /* free array of hash table */
   free(hashtable->array);
   /* free hash table */
