@@ -1,5 +1,6 @@
 #include "hashtable.h"
 #include <string.h>
+
 List *find_node_in_ht(HashTable *hashtable, const char *key, int i);
 
 /*
@@ -45,8 +46,9 @@ List *find_node_in_ht(HashTable *hashtable, const char *key, int i)
   while (n_ptr->key != key) {
     n_ptr = n_ptr->next;
     /* return NULL if end of list is reached */
-    if (n_ptr->next == NULL)
+    if (n_ptr == NULL) {
       return NULL;
+    }
   }
   /* else: */
   return n_ptr;
