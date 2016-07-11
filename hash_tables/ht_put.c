@@ -3,6 +3,7 @@
 #include <string.h>
 
 List *add_as_head(List *l_ptr, const char *key, const char *value);
+List *find_node_in_ht0(HashTable *hashtable, const char *key, int i);
 
 /*
  * ht_put takes in the following three parameters:
@@ -19,9 +20,19 @@ int ht_put(HashTable *hashtable, const char *key, const char *value)
 {
   int i;
   List *n_ptr;
-  
+
   /* hash @key and get index, using hash */
   i = hash(key,  sizeof(hashtable));
+
+  /* if key exists in hash table, replace value with value passed as arg */
+  n_ptr = find_node_in_ht0(hashtable, key, i);
+  if (n_ptr != NULL) {
+    free(n_ptr->value);
+    n_ptr->value = strdup(value);
+    return 0;
+  }  
+
+  /* else */
   /* create linked list node with @key and @value */
   n_ptr = add_as_head(hashtable->array[i], key, value);
   /* if mem alloc failed */
@@ -68,3 +79,35 @@ List *add_as_head(List *l_ptr, const char *key, const char *value)
   /* return pointer to List node */
   return n_ptr;
 }
+
+
+/*
+ * find_node_in_ht takes in the following parameters:
+ * 1) a pointer to a hash table @hashtable
+ * 2) a string representing a key stored in the hash table, @key
+ * 3) an integer representing the index of the key in the hash table, @i
+ *
+ * find_node_in_ht searches the linked list at the @i in the hashtable
+ * and returns the pointer to the node containing @key as its key element.
+ */
+List *find_node_in_ht0(HashTable *hashtable, const char *key, int i)
+{
+  List *n_ptr;
+  n_ptr = hashtable->array[i];
+
+  /* if list is empty, return NULL */
+  if (n_ptr == NULL)
+    return NULL;
+
+  /* else, identify pointer with key as key element */
+  while (n_ptr->key != key) {
+    n_ptr = n_ptr->next;
+    /* return NULL if end of list is reached */
+    if (n_ptr == NULL) {
+      return NULL;
+    }
+  }
+  /* else: */
+  return n_ptr;
+}
+

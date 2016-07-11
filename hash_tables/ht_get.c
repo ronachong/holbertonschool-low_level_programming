@@ -42,6 +42,11 @@ List *find_node_in_ht(HashTable *hashtable, const char *key, int i)
 {
   List *n_ptr;
   n_ptr = hashtable->array[i];
+
+  /* return NULL if list is empty */
+  if (n_ptr == NULL)
+    return NULL;
+
   /* identify pointer with key as key element */
   while (n_ptr->key != key) {
     n_ptr = n_ptr->next;
