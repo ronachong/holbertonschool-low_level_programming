@@ -15,7 +15,6 @@ char *ht_get(HashTable *hashtable, const char *key)
 {
   int i;
   List *n_ptr;
-  char *value;
 
   /* hash @key to get index, using hash */
   i = hash(key, sizeof(hashtable));

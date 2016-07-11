@@ -9,7 +9,7 @@
  */
 void ht_free(HashTable *hashtable)
 {
-  int i;
+  unsigned int i;
   List *n_ptr;
   List *tmp;
 
