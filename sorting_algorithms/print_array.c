@@ -1,4 +1,3 @@
-#include <stdio.h>
 void printn(int i);
 int get_len(int i);
 int print_char(char c);
@@ -19,6 +18,7 @@ void print_array(int *array, int size)
     print_char(' ');
   }
   printn(array[i]);
+  print_char('\n');
 }
 
 /*
@@ -34,22 +34,25 @@ void printn(int i) {
   len = get_len(i);
   n = i;
 
-  for (j = 0, k = 1; j < len; j++) {
+  for (j = 0, k = 1; j < len; j++, k = 1) {
     n_b4 = n;
-    /* reduce to first digit */
-    while (n > 9) {
-      n /= 10;
-      k *= 10;
-    }
-    /* print digit, and revert n to remaining unprinted digits */
-    if (k == 1 && j != len - 1) {
+
+    /* print 0 if leading digit is 0 */
+    if (len - j != get_len(n_b4)) {
       print_char('0');
     }
+
     else {
+      /* reduce to first digit */
+      while (n > 9) {
+	n /= 10;
+	k *= 10;
+      }
+      /* print digit */
       print_char(n + 48);
+      /* revert n to remaining unprinted digits */
       n = n_b4 % (n*k);
     }
-    k = 1;
   }
 }
 
