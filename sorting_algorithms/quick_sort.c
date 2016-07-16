@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 void print_array(int *, int); /*here for testing reasons */
-
+int *make_parray(int size);
 int partition(int *array, int size, int pivot);
 
 /*
@@ -12,21 +12,17 @@ int partition(int *array, int size, int pivot);
 
 void quick_sort(int *array, int size)
 {
-  int *pivots;
+  int *parray;
   /* int p; */
-  int s1;
+  /* int s1; */
 
   array = array;
-  /* p = 0; */
 
-  pivots = malloc(sizeof(int)*(size + 1));
-  if (pivots == NULL)
+  parray = make_parray(size);
+  if (parray == NULL)
     return;
-  for (s1 = 0; s1 < size + 1; s1++) {
-    pivots[s1] = 0;
-  }
-  print_array(pivots, size + 1);
-  free(pivots);
+  print_array(parray, size + 1);
+  free(parray);
 	     
   /* start with size = size and s1 = 0 */
   /* size is greater than 2, so partition array:
@@ -43,10 +39,29 @@ void quick_sort(int *array, int size)
 
   /* repeat partition cycle, until find_pnext returns the extra/last index
      in track array */
-
 }
 
+/*
+ * make_parray takes in an integer value representing the size of an array to
+ * quicksort, @size, and creates an array @parray of 0s terminated with 1, and
+ * return @parray.
+ * @parray is to be used by quick_sort to track the pivots made while partition-
+ * ing the input array.
+ */
+int *make_parray(int size)
+{
+  int i;
+  int *parray;
 
+  parray = malloc(sizeof(int)*(size + 1));
+  if (parray == NULL)
+    return NULL;
+  for (i = 0; i < size; i++) {
+    parray[i] = 0;
+  }
+  parray[size] = 1;
+  return parray;
+}
 
 /* 
  * partition takes in the following parameters:
