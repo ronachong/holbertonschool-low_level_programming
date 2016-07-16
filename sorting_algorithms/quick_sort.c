@@ -2,7 +2,7 @@
 #include <stdlib.h>
 void print_array(int *, int); /*here for testing reasons */
 int *make_parray(int size);
-int partition(int *array, int size, int pivot);
+int partition(int *array, int s1, int size, int pivot);
 
 /*
  * quick_sort takes in an int array @array, and an int representing the size of
@@ -13,32 +13,42 @@ int partition(int *array, int size, int pivot);
 void quick_sort(int *array, int size)
 {
   int *parray;
-  /* int p; */
-  /* int s1; */
+  int sa_size;
+  int p;
+  int pval;
+  int s1;
 
-  array = array;
-
+  /* create parray to track partition points/pivots */
   parray = make_parray(size);
   if (parray == NULL)
     return;
+
+  /* start with sa_size = size and s1 = 0 -> subarray as whole array */
+  sa_size = size;
+  s1 = 0;
+  
+  /* while size of subarray is greater than 2 */
+  while (sa_size > 2) {
+    /* find value to pivot around */
+    pval = array[rand() % sa_size];
+    /* partition */
+    p = partition(array, s1, sa_size, pval);
+    printf("p is %d\n", p);
+    /* update subarray size to reflect size of Lmost subarray resulting from
+       partition */
+    sa_size = p - s1;
+    /* record pivot point in parray */
+    parray[p] = 1;
+  }
+
   print_array(parray, size + 1);
-  free(parray);
-	     
-  /* start with size = size and s1 = 0 */
-  /* size is greater than 2, so partition array:
-     make pivot (pivot = array[rand() % csize];)
-     run partition with s1 and size, store return as p */
-
-  /* calculate size of subarray starting from left:
-     using size = p - s1 */
-  /* while size is greater than 2, partition further */
-
   /* when leftmost subarray is size less than 3:
      update s1 to previous p
      update p to next p stored in array */
 
   /* repeat partition cycle, until find_pnext returns the extra/last index
      in track array */
+  free(parray);
 }
 
 /*
@@ -66,19 +76,18 @@ int *make_parray(int size)
 /* 
  * partition takes in the following parameters:
  * - int array @array
- * - int representing size of @array, @size
+ * - int representing the start index for partition, @s1
+ * - int representing the size of the subarray of @array to partition, @size
  * - int representing pivot value for partition, @pivot 
- * partition arranges the given array such that the first half of @array con-
- * tains values less than the pivot, and the second half contains values greater
- * than the pivot.
+ * partition arranges a specified subarray of @array such that the first half of
+ * the given subarray contains values less than the pivot, and the second half
+ * of the subarray contains values greater than the pivot.
  */
-int partition(int *array, int size, int pivot)
+int partition(int *array, int s1, int size, int pivot)
 {
-  int s1;
   int s2;
   int tmp;
 
-  s1 = 0;
   s2 = size - 1;
 
   while (s1 != s2) {
