@@ -20,17 +20,31 @@ void quick_sort(int *array, int size)
  */
 void partition(int *array, int size, int pivot)
 {
-  s1;
-  s2;
+  int s1;
+  int s2;
+  int tmp;
 
   /* start with s1 at beginning of array (val = 0) */
   /* start with s2 at end of array (val = size) */
+  s1 = 0;
+  s2 = size;
 
+  while (s1 != s2) {
   /* check if value at s1 is equal to or greater than pivot */
   /* if not, increment s1, till it is */
+    while (array[s1] < pivot)
+      s1++;
   /* check if value at s2 is equal to or less than pivot */
   /* if not, increment s2, till it is */
-  /* swap values at s1 and s2 */
+    while (array[s2] > pivot)
+      s2++;
+
+    /* swap values at s1 and s2 */
+    tmp = array[s1];
+    array[s1] = array[s2];
+    array[s2] = array[s1];
+  
   /* repeat */
   /* end when the value at s1 and s2 are both equal to the pivot */
+  }
 }
