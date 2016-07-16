@@ -3,6 +3,7 @@
 void print_array(int *, int); /*here for testing reasons */
 int *make_parray(int size);
 int partition(int *array, int s1, int size, int pivot);
+int find_pnext(int p, int *parray, int size);
 
 /*
  * quick_sort takes in an int array @array, and an int representing the size of
@@ -26,26 +27,30 @@ void quick_sort(int *array, int size)
   /* start with sa_size = size and s1 = 0 -> subarray as whole array */
   sa_size = size;
   s1 = 0;
-  
-  /* while size of subarray is greater than 2 */
-  while (sa_size > 2) {
-    /* find value to pivot around */
-    pval = array[rand() % sa_size];
-    /* partition */
-    p = partition(array, s1, sa_size, pval);
-    printf("p is %d\n", p);
-    /* update subarray size to reflect size of Lmost subarray resulting from
-       partition */
-    sa_size = p - s1;
-    /* record pivot point in parray */
-    parray[p] = 1;
-  }
 
-  print_array(parray, size + 1);
-  /* when leftmost subarray is size less than 3:
-     update s1 to previous p
-     update p to next p stored in array */
+  /* while (p != size) { */
+    /* while size of subarray is greater than 2 */
+    while (sa_size > 2) {
+      /* find value to pivot around */
+      pval = array[rand() % sa_size];
+      /* partition */
+      p = partition(array, s1, sa_size, pval);
+      printf("p is %d\n", p);
+      printf("pnext is %d\n", find_pnext(p, parray, size));
+      /* update subarray size to reflect size of Lmost subarray resulting from
+	 partition */
+      sa_size = p - s1;
+      /* record pivot point in parray */
+      parray[p] = 1;
+    }
 
+    print_array(parray, size + 1);
+    /* when leftmost subarray is size less than 3:
+       update s1 to previous p + 1
+       update p to next p stored in array */
+    /* s1 = p + 1; */
+    /* sa_size = find_pnext() - s1; */
+  /* } */
   /* repeat partition cycle, until find_pnext returns the extra/last index
      in track array */
   free(parray);
@@ -105,4 +110,26 @@ int partition(int *array, int s1, int size, int pivot)
     array[s2] = tmp;
   }
   return s1;
+}
+
+/*
+ * find_pnext takes in the following parameters:
+ * - the integer @p, representing the most recent pivot point in a quick sort
+ *   of an int array
+ * - the int array @parray, an array representing the pivot points so far for a
+ *   quick sort of an int array
+ * - the integer @size, representing the size of the array being sorted by the
+ *   quick sort.
+ * find_pnext returns the closest pivot point of a previous partition to the
+ * right of @p, in the array being quick-sorted, or the 1-terminator of @parray.
+ */
+int find_pnext(int p, int *parray, int size)
+{
+  int i;
+
+  for (i = p + 1; i < size + 1; i++) {
+    if (parray[i] == 1)
+      return i;
+  }
+  return -1;
 }
