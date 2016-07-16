@@ -33,6 +33,10 @@ void printn(int i) {
 
   len = get_len(i);
   n = i;
+  if (i == 0) {
+    print_char('0');
+    return;
+  }
 
   for (j = 0, k = 1; j < len; j++, k = 1) {
     n_b4 = n;
