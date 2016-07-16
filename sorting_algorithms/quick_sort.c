@@ -35,13 +35,9 @@ void quick_sort(int *array, int size)
     while (sa_size > 2) {
       /* find value to pivot around */
       pivot = s1;
-      printf("pivot point calculated is %d\n", pivot);
       pval = array[pivot];
-      printf("pval is now %d\n", pval);
       /* partition */
       p = partition(array, s1, sa_size, pval);
-      print_array(array, size);
-      printf("p is %d\n", p);
       /* update subarray size to reflect size of Lmost subarray resulting from
 	 partition */
       sa_size = p - s1;
@@ -49,20 +45,15 @@ void quick_sort(int *array, int size)
       parray[p] = 1;
     }
 
-    print_array(parray, size + 1);
     /* when leftmost subarray is size less than 3:
        update s1 to previous p + 1
        update p to next p stored in array */
     s1 = p + 1;
-    printf("s1 now %d\n", s1);
     p = find_pnext(p, parray, size);
-    printf("p now %d\n", p);
     sa_size = p - s1;
-    printf("sa_size now %d\n", sa_size);
   }
   /* repeat partition cycle, until find_pnext returns the extra/last index
      in track array */
-
   free(parray);
 }
 
