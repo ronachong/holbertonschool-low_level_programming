@@ -8,23 +8,18 @@
 
 void insertion_sort(int *array, int size)
 {
-  int r;
   int i;
   int ind;
-  /* int tmp; */
+  int tmp;
 
-  array = array;
-  /* tmp = 0; */
-
-
-    for (r = 0, ind = size - 1; r < size; r++, ind--) {
+  for (ind = 0; ind < size; ind++) {
     for (i = ind; i > 0; i--) {
       printf("checking a[%d] with a[%d]\n", i, i - 1);
-    /*   if (array[i] < array[i - 1]) { */
-    /* 	tmp = array[i]; */
-    /* 	array[i] = array[i - 1]; */
-    /* 	array[i - 1] = tmp; */
-    /*   } */
+      if (array[i] < array[i - 1]) {
+    	tmp = array[i];
+    	array[i] = array[i - 1];
+    	array[i - 1] = tmp;
+      }
     }
     printf("\n");
   }
