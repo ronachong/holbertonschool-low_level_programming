@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+int partition(int *array, int size, int pivot);
 
 /*
  * quick_sort takes in an int array @array, and an int representing the size of
@@ -8,7 +10,25 @@
 
 void quick_sort(int *array, int size)
 {
-  ;
+  int pivot;
+  int s1;
+
+  /* start with size = size and s1 = 0 */
+  /* size is greater than 2, so partition array:
+     make pivot (pivot = array[rand() % csize];)
+     run partition with s1 and size, store return as p */
+
+  /* calculate size of subarray starting from left:
+     using size = p - s1 */
+  /* while size is greater than 2, partition further */
+
+  /* when leftmost subarray is size less than 3:
+     update s1 to previous p
+     update p to next p stored in array */
+
+  /* repeat partition cycle, until find_pnext returns the extra/last index
+     in track array */
+
 }
 
 /* 
@@ -20,14 +40,14 @@ void quick_sort(int *array, int size)
  * tains values less than the pivot, and the second half contains values greater
  * than the pivot.
  */
-void partition(int *array, int size, int pivot)
+int partition(int *array, int size, int pivot)
 {
   int s1;
   int s2;
   int tmp;
 
   s1 = 0;
-  s2 = size;
+  s2 = size - 1;
 
   while (s1 != s2) {
 
@@ -43,4 +63,5 @@ void partition(int *array, int size, int pivot)
     array[s1] = array[s2];
     array[s2] = tmp;
   }
+  return s1;
 }
