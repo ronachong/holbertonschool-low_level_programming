@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+void print_array(int *, int); /*here for testing reasons */
+
 int partition(int *array, int size, int pivot);
 
 /*
@@ -10,9 +12,22 @@ int partition(int *array, int size, int pivot);
 
 void quick_sort(int *array, int size)
 {
-  int pivot;
+  int *pivots;
+  /* int p; */
   int s1;
 
+  array = array;
+  /* p = 0; */
+
+  pivots = malloc(sizeof(int)*(size + 1));
+  if (pivots == NULL)
+    return;
+  for (s1 = 0; s1 < size + 1; s1++) {
+    pivots[s1] = 0;
+  }
+  print_array(pivots, size + 1);
+  free(pivots);
+	     
   /* start with size = size and s1 = 0 */
   /* size is greater than 2, so partition array:
      make pivot (pivot = array[rand() % csize];)
@@ -30,6 +45,8 @@ void quick_sort(int *array, int size)
      in track array */
 
 }
+
+
 
 /* 
  * partition takes in the following parameters:

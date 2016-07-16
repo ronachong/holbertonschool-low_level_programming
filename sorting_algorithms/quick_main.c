@@ -1,4 +1,4 @@
-/* void quick_sort(int *, int); */
+void quick_sort(int *, int);
 void partition(int *, int, int);
 void print_array(int *, int);
 
@@ -9,5 +9,8 @@ int main(void)
   print_array(array, 5);
   partition(array, 5, 1024);
   print_array(array, 5);
+
+  quick_sort(array, 5);
+  
   return (0);
 }
