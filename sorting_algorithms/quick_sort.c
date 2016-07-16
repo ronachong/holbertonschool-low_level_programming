@@ -1,13 +1,15 @@
+#include <stdio.h>
+
 /*
  * quick_sort takes in an int array @array, and an int representing the size of
  * the given array, @size.
  * quick_sort sorts the given array into ascending order via quick sort.
  */
 
-void quick_sort(int *array, int size)
-{
-  ;
-}
+/* void quick_sort(int *array, int size) */
+/* { */
+/*   ; */
+/* } */
 
 /* 
  * partition takes in the following parameters:
@@ -32,17 +34,22 @@ void partition(int *array, int size, int pivot)
   while (s1 != s2) {
   /* check if value at s1 is equal to or greater than pivot */
   /* if not, increment s1, till it is */
-    while (array[s1] < pivot)
+    while (array[s1] < pivot) {
       s1++;
+      printf("s1 increased to %d\n", s1);
+    }
   /* check if value at s2 is equal to or less than pivot */
   /* if not, increment s2, till it is */
-    while (array[s2] > pivot)
-      s2++;
+    while (array[s2] > pivot) {
+      s2--;
+      printf("s2 increased to %d\n", s2);
+    }
 
     /* swap values at s1 and s2 */
     tmp = array[s1];
     array[s1] = array[s2];
-    array[s2] = array[s1];
+    array[s2] = tmp;
+    printf("swapped s1 and s2\n");
   
   /* repeat */
   /* end when the value at s1 and s2 are both equal to the pivot */
