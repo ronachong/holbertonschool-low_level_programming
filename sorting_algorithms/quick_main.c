@@ -7,7 +7,7 @@ int main(void)
   int array[] = {402, 94111, 98, 12, 1024};
 
   print_array(array, 5);
-  partition(array, 5, 402);
+  partition(array, 5, 1024);
   print_array(array, 5);
   return (0);
 }
