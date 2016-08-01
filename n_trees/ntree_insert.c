@@ -3,11 +3,13 @@
 #include "tree.h"
 
 NTree *create_ntnode(char *data);
+List *create_llnode(NTree *new_node);
 
-int ntree_insert(NTree **tree, char **parents, char *data)
+int ntree_insert(NTree **tree, List **linked_list, char **parents, char *data)
 {
   NTree *new_node;
-
+  List *new_list;
+  
   new_node = create_ntnode(data);
   /* if creation failed, return 1 for failure */
   if (new_node == NULL)
@@ -18,6 +20,19 @@ int ntree_insert(NTree **tree, char **parents, char *data)
   if (parents == NULL || parents[0] == NULL)
       *tree = new_node;
 
+  /* if tree is not empty, add node to appropriate linked list */
+  else
+    {
+      new_list = create_llnode(new_node);
+      /* if creation failed, return 1 for failure */
+      if (new_list == NULL)
+	return 1;
+
+      /* else */
+      /* to test code */
+      *linked_list = new_list;
+    }
+  
   return 0;
 }
 
@@ -38,11 +53,25 @@ NTree *create_ntnode(char *data)
   return new_node;
 }
 
+/**
+ * create_llnode creates a new List node and returns the pointer to it.
+ */
+List *create_llnode(NTree *new_node)
+{
+  List *new_list;
+
+  new_list = malloc(sizeof(List));
+  if (new_list != NULL)
+    {
+      new_list->node = new_node;
+      new_list->next = NULL;
+    }
+
+  return new_list;
+}
+
 /*
 insert @new_node:  
- if @parents is NULL or [NULL]--
- make tree point to @new_node (*tree = new_node)
-
  else if @parents is an array of strings up to string_n:
   create new linked list node:
    malloc list and assign pointer to @new_list
