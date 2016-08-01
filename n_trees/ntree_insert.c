@@ -2,13 +2,32 @@
 #include <string.h>
 #include "tree.h"
 
+#include <stdio.h>
+
 NTree *create_ntnode(char *data);
 List *create_llnode(NTree *new_node);
+NTree *find_parent(NTree **tree, char **parents);
+NTree *find_p_in_ll(List *linked_list, char *datastr);
 
-int ntree_insert(NTree **tree, List **linked_list, char **parents, char *data)
+/* (steps remaining to implement):
+insert @new_node:  
+  find parent node:
+   traverse tree till reaching last parent - node with str=string_n
+   set last parent node to @parent_node
+
+  insert @new_list:
+   if @parent_node has children (@parent_node->children != NULL):
+    store @parent_node->children in new_list->next
+    
+   make @parent_node->children point to @new_node (@parent_node->children = @new_node)
+*/
+
+  
+int ntree_insert(NTree **tree, char **parents, char *data)
 {
   NTree *new_node;
   List *new_list;
+  NTree *parent_node;
   
   new_node = create_ntnode(data);
   /* if creation failed, return 1 for failure */
@@ -28,9 +47,14 @@ int ntree_insert(NTree **tree, List **linked_list, char **parents, char *data)
       if (new_list == NULL)
 	return 1;
 
-      /* else */
-      /* to test code */
-      *linked_list = new_list;
+      /* if creation did not fail: */
+      /* insert new_list into tree */
+      parent_node = find_parent(tree, parents);
+
+      if (parent_node->children != NULL)
+	new_list->next = parent_node->children;
+
+      parent_node->children = new_list;
     }
   
   return 0;
@@ -70,21 +94,43 @@ List *create_llnode(NTree *new_node)
   return new_list;
 }
 
-/*
-insert @new_node:  
- else if @parents is an array of strings up to string_n:
-  create new linked list node:
-   malloc list and assign pointer to @new_list
-   assign @new_node to @new_list->node
-   assign NULL to @new_list->next
+/**
+ * find_parent finds the direct parent for the new node to add in @tree.
+ */
+NTree *find_parent(NTree **tree, char **parents)
+{
+  int i;
+  NTree *parent_node;
+  List *linked_list;
 
-  find parent node:
-   traverse tree till reaching last parent - node with str=string_n
-   set last parent node to @parent_node
+  /* initialize parent_node as first node in tree */
+  parent_node = *tree;
+  linked_list = parent_node->children;
 
-  insert @new_list:
-   if @parent_node has children (@parent_node->children != NULL):
-    store @parent_node->children in new_list->next
-    
-   make @parent_node->children point to @new_node (@parent_node->children = @new_node)
-*/
+  /* initialize iterator at 1 */
+  i = 1;
+
+  /* iterate thru tree til last level is reached; locate parent node in each
+     level */
+  while (linked_list != NULL && parents[i] != NULL)
+    {
+      parent_node = find_p_in_ll(linked_list, parents[i]);
+      linked_list = parent_node->children;
+      i++;
+    }
+  
+  return parent_node;
+}
+
+/**
+ * find_p_in_ll finds the parent for the new node to add in the linked list.
+ */
+NTree *find_p_in_ll(List *linked_list, char *datastr)
+{
+  /* iterate thru linked list till parent node in linked list is reached */
+  while (strcmp(linked_list->node->str, datastr) != 0)
+    {
+      linked_list = linked_list->next;
+    }
+  return linked_list->node;
+}
