@@ -1,9 +1,16 @@
 #include <stdlib.h>
 #include <string.h>
+#include "tree.h"
 
-int ntree_insert(NTree **tree, char **parents, char *data)
+NTree *create_ntnode(char *data);
+
+NTree *ntree_insert(NTree **tree, char **parents, char *data)
 {
-  ;
+  NTree *new_node;
+  
+  new_node = create_ntnode(data);
+
+  return new_node;
 }
 
 /**
