@@ -4,13 +4,21 @@
 
 NTree *create_ntnode(char *data);
 
-NTree *ntree_insert(NTree **tree, char **parents, char *data)
+int ntree_insert(NTree **tree, char **parents, char *data)
 {
   NTree *new_node;
-  
-  new_node = create_ntnode(data);
 
-  return new_node;
+  new_node = create_ntnode(data);
+  /* if creation failed, return 1 for failure */
+  if (new_node == NULL)
+    return 1;
+
+  /* else: */
+  /* if tree is empty, make tree point to new node */
+  if (parents == NULL || parents[0] == NULL)
+      *tree = new_node;
+
+  return 0;
 }
 
 /**
@@ -21,21 +29,19 @@ NTree *create_ntnode(char *data)
   NTree *new_node;
 
   new_node = malloc(sizeof(NTree));
-  new_node->str = strdup(data);
-  new_node->children = NULL;
+  if (new_node != NULL)
+    {
+      new_node->str = strdup(data);
+      new_node->children = NULL;
+    }
 
   return new_node;
 }
 
 /*
-make new ntree node:
-malloc node and assign pointer to @new_node
-assign strdrup(@data) to @new_node->str
-assign NULL to @new_node->children
-
 insert @new_node:  
  if @parents is NULL or [NULL]--
- make tree point to @new_node (*tree = &new_node)
+ make tree point to @new_node (*tree = new_node)
 
  else if @parents is an array of strings up to string_n:
   create new linked list node:
