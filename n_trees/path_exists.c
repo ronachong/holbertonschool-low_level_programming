@@ -1,9 +1,22 @@
+#include <stdio.h>
+#include "tree.h"
+
 int path_exists(NTree *tree, char **path)
 {
+	int i;
+	List *list;
 
-	while path[i] != NULL:
-		/* check if path[i] exists in tree at given depth */
-		if (depth == 0 &&
+	i = 0;
+
+	/* if tree exists, check first node */
+	if (tree != NULL && tree->str != path[i])
+		return 0;
+
+	/* else */
+	i++;
+	list = tree->children;
+
+	return 1;
 }
 
 /*
