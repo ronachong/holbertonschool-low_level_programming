@@ -2,8 +2,15 @@
 #include <string.h>
 #include "tree.h"
 
-Ntree *check_list(List *list, char *str)
+Ntree *check_list(List *list, char *str);
 
+/**
+ * path_exists -
+ * @tree: address of the root node of an N-ary tree
+ * @path: array of string representing a path
+ * Description: checks if the N-ary tree @tree contains the given path,
+ * @path.
+ */
 int path_exists(NTree *tree, char **path)
 {
 	int i;
@@ -36,9 +43,15 @@ int path_exists(NTree *tree, char **path)
 	return 1;
 }
 
+/**
+ * check_list -
+ * @list: address of the root of a List in an N-ary tree
+ * @pathstr: string
+ * Description: check_list checks @list to see if any node within it contains
+ * contains the string @pathstr.
+ */
 Ntree *check_list(List *list, char *pathstr)
 {
-
 	/* traverse list and check each node for match */
 	while (list != NULL)
 	{
