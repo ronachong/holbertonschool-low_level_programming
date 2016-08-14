@@ -5,6 +5,7 @@ int path_exists(NTree *tree, char **path)
 {
 	int i;
 	List *list;
+	Ntree *node;
 
 	i = 0;
 
@@ -12,10 +13,23 @@ int path_exists(NTree *tree, char **path)
 	if (tree != NULL && tree->str != path[i])
 		return 0;
 
-	/* else */
+	/* if the first node matched path[0]: */
 	i++;
 	list = tree->children;
 
+	while (path[i] != NULL)
+	{
+		/* check if path[i] is in any node at given depth */
+		node = check_list(list, path[i]);
+		if (node == NULL)
+			return 0;
+
+		/* if match was for path[i] was found: */
+		i++;
+		list = node->children;
+	}
+
+	/* if a match for each string in path was found: */
 	return 1;
 }
 
