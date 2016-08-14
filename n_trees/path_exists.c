@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "tree.h"
 
+Ntree *check_list(List *list, char *str)
+
 int path_exists(NTree *tree, char **path)
 {
 	int i;
@@ -33,19 +35,19 @@ int path_exists(NTree *tree, char **path)
 	return 1;
 }
 
-/*
-start node to check at tree (i.e. depth 0)
+Ntree *check_list(List *list, char *str)
+{
 
-while path[i] != NULL:
-	check if path[i] is in a node at given depth:
-		if i/depth is at 0, simply check node->str:
-			return 0 if node->str != path[i]
-		else check each node in linked list:
-			return 0 if none of the nodes have a str == path[i]
+	/* traverse list and check each node for match */
+	while (list != NULL)
+	{
+		if (list->node->str == str)
+			return list->node;
 
-	update node to children of current node (increase depth)
-	update i
+		/* else */
+		list = list->next;
+	}
 
-loops were successfully completed (meaning a match for each path[i] was found):
-return 1
-*/
+	/* if no match was found in list */
+	return NULL;
+}
