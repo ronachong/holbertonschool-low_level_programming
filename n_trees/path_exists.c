@@ -21,10 +21,7 @@ int path_exists(NTree *tree, char **path)
 
 	/* if tree exists, check first node */
 	if (tree != NULL && strcmp(tree->str, path[i]) != 0)
-	{
-		printf("tree != NULL && strcmp(tree->str, path[i]) == 0\n");
 		return (0);
-	}
 
 	/* if the first node matched path[0]: */
 	i++;
