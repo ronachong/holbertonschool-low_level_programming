@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "tree.h"
 
@@ -8,7 +7,6 @@ void ntree_free(NTree *tree)
 	List *list;
 	List *tmp;
 
-	printf("This print works\n.");
 	/* base condition: tree or subtree is NULL */
 	if (tree == NULL)
 		return;
@@ -29,10 +27,8 @@ void ntree_free(NTree *tree)
 	free(tree->str);
 	free(tree);
 
-	printf("list is %p\n", (void *)list);
 	while (list != NULL)
 	{
-		printf("code to free list node\n");
 		node = list->node;
 		tmp = list->next;
 		free(list);
