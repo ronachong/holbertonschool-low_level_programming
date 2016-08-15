@@ -2,7 +2,7 @@
 #include <string.h>
 #include "tree.h"
 
-Ntree *check_list(List *list, char *str);
+NTree *check_list(List *list, char *str);
 
 /**
  * path_exists -
@@ -15,13 +15,16 @@ int path_exists(NTree *tree, char **path)
 {
 	int i;
 	List *list;
-	Ntree *node;
+	NTree *node;
 
 	i = 0;
 
 	/* if tree exists, check first node */
-	if (tree != NULL && strcmp(tree->str, path[i]) == 0)
+	if (tree != NULL && strcmp(tree->str, path[i]) != 0)
+	{
+		printf("tree != NULL && strcmp(tree->str, path[i]) == 0\n");
 		return (0);
+	}
 
 	/* if the first node matched path[0]: */
 	i++;
@@ -50,7 +53,7 @@ int path_exists(NTree *tree, char **path)
  * Description: check_list checks @list to see if any node within it contains
  * contains the string @pathstr.
  */
-Ntree *check_list(List *list, char *pathstr)
+NTree *check_list(List *list, char *pathstr)
 {
 	/* traverse list and check each node for match */
 	while (list != NULL)
