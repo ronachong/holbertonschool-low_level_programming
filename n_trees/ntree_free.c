@@ -3,9 +3,11 @@
 
 void ntree_free(NTree *tree)
 {
-	Ntree *node;
+	NTree *node;
 	List *list;
 	List *tmp;
+
+	list = NULL;
 
 	/* base condition: tree or subtree is NULL */
 	if (tree == NULL)
@@ -34,28 +36,3 @@ void ntree_free(NTree *tree)
 
 	return;
 }
-
-/* to free for List node
-list->node (see "to free for each NTree node)
-list->next
-list itself
-*/
-
-/* to free for each NTree node:
-node->str
-node->children
-node itself
-*/
-
-----------------------
-
-/* free tree
-while ntnode
-free root node using free_ntnode
-for each node in children linked lists: free each node using free_ntnode
- */
-
-/* free_ntnode
-free node->str
-if node->next != NULL:
- */
