@@ -15,7 +15,11 @@ void ntree_free(NTree *tree)
 
 	/* base condition: tree/subtree has no children */
 	if (tree->children == NULL)
+	{
+		free(tree->str);
+		free(tree);
 		return;
+	}
 
 	/* else */
 	/* free root and all children (recursive call) */
